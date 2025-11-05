@@ -6,9 +6,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/hiddify/hiddify-core/config"
-	pb "github.com/hiddify/hiddify-core/hiddifyrpc"
-	v2 "github.com/hiddify/hiddify-core/v2"
+	"github.com/pppwaw/white-label-airport-core/config"
+	v2 "github.com/pppwaw/white-label-airport-core/v2"
+	pb "github.com/pppwaw/white-label-airport-core/whitelabelairportrpc"
 	"github.com/sagernet/sing-box/experimental/libbox"
 	"github.com/sagernet/sing-box/log"
 	"github.com/sagernet/sing-box/option"
@@ -17,17 +17,17 @@ import (
 )
 
 var (
-	hiddifySettingPath     string
-	configPath             string
-	defaultConfigs         config.HiddifyOptions = *config.DefaultHiddifyOptions()
-	commandBuildOutputPath string
+	whitelabelairportSettingPath string
+	configPath                   string
+	defaultConfigs               config.WhiteLabelAirportOptions = *config.DefaultWhiteLabelAirportOptions()
+	commandBuildOutputPath       string
 )
 
 var commandBuild = &cobra.Command{
 	Use:   "build",
 	Short: "Build configuration",
 	Run: func(cmd *cobra.Command, args []string) {
-		err := build(configPath, hiddifySettingPath)
+		err := build(configPath, whitelabelairportSettingPath)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -80,14 +80,14 @@ func build(path string, optionsPath string) error {
 		return err
 	}
 
-	HiddifyOptions := &defaultConfigs // config.DefaultHiddifyOptions()
+	WhiteLabelAirportOptions := &defaultConfigs // config.DefaultWhiteLabelAirportOptions()
 	if optionsPath != "" {
-		HiddifyOptions, err = readHiddifyOptionsAt(optionsPath)
+		WhiteLabelAirportOptions, err = readWhiteLabelAirportOptionsAt(optionsPath)
 		if err != nil {
 			return err
 		}
 	}
-	config, err := config.BuildConfigJson(*HiddifyOptions, *options)
+	config, err := config.BuildConfigJson(*WhiteLabelAirportOptions, *options)
 	if err != nil {
 		return err
 	}
@@ -136,12 +136,12 @@ func readConfigBytes(content []byte) (*option.Options, error) {
 	return &options, nil
 }
 
-func readHiddifyOptionsAt(path string) (*config.HiddifyOptions, error) {
+func readWhiteLabelAirportOptionsAt(path string) (*config.WhiteLabelAirportOptions, error) {
 	content, err := os.ReadFile(path)
 	if err != nil {
 		return nil, err
 	}
-	var options config.HiddifyOptions
+	var options config.WhiteLabelAirportOptions
 	err = json.Unmarshal(content, &options)
 	if err != nil {
 		return nil, err
@@ -165,7 +165,7 @@ func readHiddifyOptionsAt(path string) (*config.HiddifyOptions, error) {
 func addHConfigFlags(commandRun *cobra.Command) {
 	commandRun.Flags().StringVarP(&configPath, "config", "c", "", "proxy config path or url")
 	commandRun.MarkFlagRequired("config")
-	commandRun.Flags().StringVarP(&hiddifySettingPath, "hiddify", "d", "", "Hiddify Setting JSON Path")
+	commandRun.Flags().StringVarP(&whitelabelairportSettingPath, "whitelabelairport", "d", "", "WhiteLabelAirport Setting JSON Path")
 	commandRun.Flags().BoolVar(&defaultConfigs.EnableFullConfig, "full-config", false, "allows including tags other than output")
 	commandRun.Flags().StringVar(&defaultConfigs.LogLevel, "log", "warn", "log level")
 	commandRun.Flags().BoolVar(&defaultConfigs.InboundOptions.EnableTun, "tun", false, "Enable Tun")

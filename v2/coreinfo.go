@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/hiddify/hiddify-core/bridge"
-	pb "github.com/hiddify/hiddify-core/hiddifyrpc"
+	"github.com/pppwaw/white-label-airport-core/bridge"
+	pb "github.com/pppwaw/white-label-airport-core/whitelabelairportrpc"
 	"google.golang.org/grpc"
 )
 

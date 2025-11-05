@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package hiddifyrpc;
+package whitelabelairportrpc;
 
-option go_package = "./hiddifyrpc";
+option go_package = "./whitelabelairportrpc";
 
 message HelloRequest {
   string name = 1;

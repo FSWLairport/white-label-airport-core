@@ -2,12 +2,13 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v5.28.0
-// source: hiddify.proto
+// source: whitelabelairport.proto
 
-package hiddifyrpc
+package whitelabelairportrpc
 
 import (
 	context "context"
+
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -19,8 +20,8 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Hello_SayHello_FullMethodName       = "/hiddifyrpc.Hello/SayHello"
-	Hello_SayHelloStream_FullMethodName = "/hiddifyrpc.Hello/SayHelloStream"
+	Hello_SayHello_FullMethodName       = "/whitelabelairportrpc.Hello/SayHello"
+	Hello_SayHelloStream_FullMethodName = "/whitelabelairportrpc.Hello/SayHelloStream"
 )
 
 // HelloClient is the client API for Hello service.
@@ -134,7 +135,7 @@ type Hello_SayHelloStreamServer = grpc.BidiStreamingServer[HelloRequest, HelloRe
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Hello_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "hiddifyrpc.Hello",
+	ServiceName: "whitelabelairportrpc.Hello",
 	HandlerType: (*HelloServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -150,27 +151,27 @@ var Hello_ServiceDesc = grpc.ServiceDesc{
 			ClientStreams: true,
 		},
 	},
-	Metadata: "hiddify.proto",
+	Metadata: "whitelabelairport.proto",
 }
 
 const (
-	Core_Start_FullMethodName                 = "/hiddifyrpc.Core/Start"
-	Core_CoreInfoListener_FullMethodName      = "/hiddifyrpc.Core/CoreInfoListener"
-	Core_OutboundsInfo_FullMethodName         = "/hiddifyrpc.Core/OutboundsInfo"
-	Core_MainOutboundsInfo_FullMethodName     = "/hiddifyrpc.Core/MainOutboundsInfo"
-	Core_GetSystemInfo_FullMethodName         = "/hiddifyrpc.Core/GetSystemInfo"
-	Core_Setup_FullMethodName                 = "/hiddifyrpc.Core/Setup"
-	Core_Parse_FullMethodName                 = "/hiddifyrpc.Core/Parse"
-	Core_ChangeHiddifySettings_FullMethodName = "/hiddifyrpc.Core/ChangeHiddifySettings"
-	Core_StartService_FullMethodName          = "/hiddifyrpc.Core/StartService"
-	Core_Stop_FullMethodName                  = "/hiddifyrpc.Core/Stop"
-	Core_Restart_FullMethodName               = "/hiddifyrpc.Core/Restart"
-	Core_SelectOutbound_FullMethodName        = "/hiddifyrpc.Core/SelectOutbound"
-	Core_UrlTest_FullMethodName               = "/hiddifyrpc.Core/UrlTest"
-	Core_GenerateWarpConfig_FullMethodName    = "/hiddifyrpc.Core/GenerateWarpConfig"
-	Core_GetSystemProxyStatus_FullMethodName  = "/hiddifyrpc.Core/GetSystemProxyStatus"
-	Core_SetSystemProxyEnabled_FullMethodName = "/hiddifyrpc.Core/SetSystemProxyEnabled"
-	Core_LogListener_FullMethodName           = "/hiddifyrpc.Core/LogListener"
+	Core_Start_FullMethodName                           = "/whitelabelairportrpc.Core/Start"
+	Core_CoreInfoListener_FullMethodName                = "/whitelabelairportrpc.Core/CoreInfoListener"
+	Core_OutboundsInfo_FullMethodName                   = "/whitelabelairportrpc.Core/OutboundsInfo"
+	Core_MainOutboundsInfo_FullMethodName               = "/whitelabelairportrpc.Core/MainOutboundsInfo"
+	Core_GetSystemInfo_FullMethodName                   = "/whitelabelairportrpc.Core/GetSystemInfo"
+	Core_Setup_FullMethodName                           = "/whitelabelairportrpc.Core/Setup"
+	Core_Parse_FullMethodName                           = "/whitelabelairportrpc.Core/Parse"
+	Core_ChangeWhiteLabelAirportSettings_FullMethodName = "/whitelabelairportrpc.Core/ChangeWhiteLabelAirportSettings"
+	Core_StartService_FullMethodName                    = "/whitelabelairportrpc.Core/StartService"
+	Core_Stop_FullMethodName                            = "/whitelabelairportrpc.Core/Stop"
+	Core_Restart_FullMethodName                         = "/whitelabelairportrpc.Core/Restart"
+	Core_SelectOutbound_FullMethodName                  = "/whitelabelairportrpc.Core/SelectOutbound"
+	Core_UrlTest_FullMethodName                         = "/whitelabelairportrpc.Core/UrlTest"
+	Core_GenerateWarpConfig_FullMethodName              = "/whitelabelairportrpc.Core/GenerateWarpConfig"
+	Core_GetSystemProxyStatus_FullMethodName            = "/whitelabelairportrpc.Core/GetSystemProxyStatus"
+	Core_SetSystemProxyEnabled_FullMethodName           = "/whitelabelairportrpc.Core/SetSystemProxyEnabled"
+	Core_LogListener_FullMethodName                     = "/whitelabelairportrpc.Core/LogListener"
 )
 
 // CoreClient is the client API for Core service.
@@ -184,7 +185,7 @@ type CoreClient interface {
 	GetSystemInfo(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[SystemInfo], error)
 	Setup(ctx context.Context, in *SetupRequest, opts ...grpc.CallOption) (*Response, error)
 	Parse(ctx context.Context, in *ParseRequest, opts ...grpc.CallOption) (*ParseResponse, error)
-	ChangeHiddifySettings(ctx context.Context, in *ChangeHiddifySettingsRequest, opts ...grpc.CallOption) (*CoreInfoResponse, error)
+	ChangeWhiteLabelAirportSettings(ctx context.Context, in *ChangeWhiteLabelAirportSettingsRequest, opts ...grpc.CallOption) (*CoreInfoResponse, error)
 	//rpc GenerateConfig (GenerateConfigRequest) returns (GenerateConfigResponse);
 	StartService(ctx context.Context, in *StartRequest, opts ...grpc.CallOption) (*CoreInfoResponse, error)
 	Stop(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*CoreInfoResponse, error)
@@ -311,10 +312,10 @@ func (c *coreClient) Parse(ctx context.Context, in *ParseRequest, opts ...grpc.C
 	return out, nil
 }
 
-func (c *coreClient) ChangeHiddifySettings(ctx context.Context, in *ChangeHiddifySettingsRequest, opts ...grpc.CallOption) (*CoreInfoResponse, error) {
+func (c *coreClient) ChangeWhiteLabelAirportSettings(ctx context.Context, in *ChangeWhiteLabelAirportSettingsRequest, opts ...grpc.CallOption) (*CoreInfoResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CoreInfoResponse)
-	err := c.cc.Invoke(ctx, Core_ChangeHiddifySettings_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, Core_ChangeWhiteLabelAirportSettings_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -431,7 +432,7 @@ type CoreServer interface {
 	GetSystemInfo(*Empty, grpc.ServerStreamingServer[SystemInfo]) error
 	Setup(context.Context, *SetupRequest) (*Response, error)
 	Parse(context.Context, *ParseRequest) (*ParseResponse, error)
-	ChangeHiddifySettings(context.Context, *ChangeHiddifySettingsRequest) (*CoreInfoResponse, error)
+	ChangeWhiteLabelAirportSettings(context.Context, *ChangeWhiteLabelAirportSettingsRequest) (*CoreInfoResponse, error)
 	//rpc GenerateConfig (GenerateConfigRequest) returns (GenerateConfigResponse);
 	StartService(context.Context, *StartRequest) (*CoreInfoResponse, error)
 	Stop(context.Context, *Empty) (*CoreInfoResponse, error)
@@ -473,8 +474,8 @@ func (UnimplementedCoreServer) Setup(context.Context, *SetupRequest) (*Response,
 func (UnimplementedCoreServer) Parse(context.Context, *ParseRequest) (*ParseResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Parse not implemented")
 }
-func (UnimplementedCoreServer) ChangeHiddifySettings(context.Context, *ChangeHiddifySettingsRequest) (*CoreInfoResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChangeHiddifySettings not implemented")
+func (UnimplementedCoreServer) ChangeWhiteLabelAirportSettings(context.Context, *ChangeWhiteLabelAirportSettingsRequest) (*CoreInfoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChangeWhiteLabelAirportSettings not implemented")
 }
 func (UnimplementedCoreServer) StartService(context.Context, *StartRequest) (*CoreInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StartService not implemented")
@@ -622,20 +623,20 @@ func _Core_Parse_Handler(srv interface{}, ctx context.Context, dec func(interfac
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Core_ChangeHiddifySettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ChangeHiddifySettingsRequest)
+func _Core_ChangeWhiteLabelAirportSettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangeWhiteLabelAirportSettingsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CoreServer).ChangeHiddifySettings(ctx, in)
+		return srv.(CoreServer).ChangeWhiteLabelAirportSettings(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Core_ChangeHiddifySettings_FullMethodName,
+		FullMethod: Core_ChangeWhiteLabelAirportSettings_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CoreServer).ChangeHiddifySettings(ctx, req.(*ChangeHiddifySettingsRequest))
+		return srv.(CoreServer).ChangeWhiteLabelAirportSettings(ctx, req.(*ChangeWhiteLabelAirportSettingsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -799,7 +800,7 @@ type Core_LogListenerServer = grpc.ServerStreamingServer[LogMessage]
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Core_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "hiddifyrpc.Core",
+	ServiceName: "whitelabelairportrpc.Core",
 	HandlerType: (*CoreServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -815,8 +816,8 @@ var Core_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Core_Parse_Handler,
 		},
 		{
-			MethodName: "ChangeHiddifySettings",
-			Handler:    _Core_ChangeHiddifySettings_Handler,
+			MethodName: "ChangeWhiteLabelAirportSettings",
+			Handler:    _Core_ChangeWhiteLabelAirportSettings_Handler,
 		},
 		{
 			MethodName: "StartService",
@@ -878,14 +879,14 @@ var Core_ServiceDesc = grpc.ServiceDesc{
 			ServerStreams: true,
 		},
 	},
-	Metadata: "hiddify.proto",
+	Metadata: "whitelabelairport.proto",
 }
 
 const (
-	TunnelService_Start_FullMethodName  = "/hiddifyrpc.TunnelService/Start"
-	TunnelService_Stop_FullMethodName   = "/hiddifyrpc.TunnelService/Stop"
-	TunnelService_Status_FullMethodName = "/hiddifyrpc.TunnelService/Status"
-	TunnelService_Exit_FullMethodName   = "/hiddifyrpc.TunnelService/Exit"
+	TunnelService_Start_FullMethodName  = "/whitelabelairportrpc.TunnelService/Start"
+	TunnelService_Stop_FullMethodName   = "/whitelabelairportrpc.TunnelService/Stop"
+	TunnelService_Status_FullMethodName = "/whitelabelairportrpc.TunnelService/Status"
+	TunnelService_Exit_FullMethodName   = "/whitelabelairportrpc.TunnelService/Exit"
 )
 
 // TunnelServiceClient is the client API for TunnelService service.
@@ -1073,7 +1074,7 @@ func _TunnelService_Exit_Handler(srv interface{}, ctx context.Context, dec func(
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var TunnelService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "hiddifyrpc.TunnelService",
+	ServiceName: "whitelabelairportrpc.TunnelService",
 	HandlerType: (*TunnelServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -1094,5 +1095,5 @@ var TunnelService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "hiddify.proto",
+	Metadata: "whitelabelairport.proto",
 }

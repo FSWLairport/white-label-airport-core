@@ -3,8 +3,8 @@ package v2
 import (
 	"context"
 
-	"github.com/hiddify/hiddify-core/config"
-	pb "github.com/hiddify/hiddify-core/hiddifyrpc"
+	"github.com/pppwaw/white-label-airport-core/config"
+	pb "github.com/pppwaw/white-label-airport-core/whitelabelairportrpc"
 )
 
 func (s *CoreService) GenerateWarpConfig(ctx context.Context, in *pb.GenerateWarpConfigRequest) (*pb.WarpGenerationResponse, error) {

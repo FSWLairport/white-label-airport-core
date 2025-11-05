@@ -11,7 +11,7 @@ import (
 
 type outboundMap map[string]interface{}
 
-func patchOutboundMux(base option.Outbound, configOpt HiddifyOptions, obj outboundMap) outboundMap {
+func patchOutboundMux(base option.Outbound, configOpt WhiteLabelAirportOptions, obj outboundMap) outboundMap {
 	if configOpt.Mux.Enable {
 		multiplex := option.OutboundMultiplexOptions{
 			Enabled:    true,
@@ -26,7 +26,7 @@ func patchOutboundMux(base option.Outbound, configOpt HiddifyOptions, obj outbou
 	return obj
 }
 
-func patchOutboundTLSTricks(base option.Outbound, configOpt HiddifyOptions, obj outboundMap) outboundMap {
+func patchOutboundTLSTricks(base option.Outbound, configOpt WhiteLabelAirportOptions, obj outboundMap) outboundMap {
 	if base.Type == C.TypeSelector || base.Type == C.TypeURLTest || base.Type == C.TypeBlock || base.Type == C.TypeDNS {
 		return obj
 	}
@@ -97,7 +97,7 @@ func patchOutboundTLSTricks(base option.Outbound, configOpt HiddifyOptions, obj 
 	return obj
 }
 
-func patchOutboundFragment(base option.Outbound, configOpt HiddifyOptions, obj outboundMap) outboundMap {
+func patchOutboundFragment(base option.Outbound, configOpt WhiteLabelAirportOptions, obj outboundMap) outboundMap {
 	if configOpt.TLSTricks.EnableFragment {
 		obj["tcp_fast_open"] = false
 		obj["tls_fragment"] = option.TLSFragmentOptions{
@@ -126,7 +126,7 @@ func isOutboundReality(base option.Outbound) bool {
 	return base.VLESSOptions.OutboundTLSOptionsContainer.TLS.Reality.Enabled
 }
 
-func patchOutbound(base option.Outbound, configOpt HiddifyOptions, staticIpsDns map[string][]string) (*option.Outbound, string, error) {
+func patchOutbound(base option.Outbound, configOpt WhiteLabelAirportOptions, staticIpsDns map[string][]string) (*option.Outbound, string, error) {
 	formatErr := func(err error) error {
 		return fmt.Errorf("error patching outbound[%s][%s]: %w", base.Tag, base.Type, err)
 	}

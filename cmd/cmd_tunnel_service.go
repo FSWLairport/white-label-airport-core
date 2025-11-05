@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/hiddify/hiddify-core/config"
-	v2 "github.com/hiddify/hiddify-core/v2"
+	"github.com/pppwaw/white-label-airport-core/config"
+	v2 "github.com/pppwaw/white-label-airport-core/v2"
 
 	"github.com/spf13/cobra"
 )
@@ -19,7 +19,7 @@ var commandService = &cobra.Command{
 		arg := args[0]
 		switch arg {
 		case "activate":
-			config.ActivateTunnelService(config.HiddifyOptions{
+			config.ActivateTunnelService(config.WhiteLabelAirportOptions{
 				InboundOptions: config.InboundOptions{
 					EnableTunService: true,
 					MixedPort:        12334,

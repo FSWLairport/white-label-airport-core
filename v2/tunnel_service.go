@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	pb "github.com/hiddify/hiddify-core/hiddifyrpc"
+	pb "github.com/pppwaw/white-label-airport-core/whitelabelairportrpc"
 )
 
 func (s *TunnelService) Start(ctx context.Context, in *pb.TunnelStartRequest) (*pb.TunnelResponse, error) {
@@ -46,7 +46,7 @@ func makeTunnelConfig(Ipv6 bool, ServerPort int32, StrictRoute bool, EndpointInd
 		  {
 			"type": "tun",
 			"tag": "tun-in",
-			"interface_name": "HiddifyTunnel",
+			"interface_name": "WhiteLabelAirportTunnel",
 			"inet4_address": "172.19.0.1/30",
 			` + ipv6 + `
 			"auto_route": true,
@@ -72,10 +72,10 @@ func makeTunnelConfig(Ipv6 bool, ServerPort int32, StrictRoute bool, EndpointInd
 		  "rules": [
 			{
 				"process_name":[
-					"Hiddify.exe",
-					"Hiddify",
-					"HiddifyCli",
-					"HiddifyCli.exe"
+					"WhiteLabelAirport.exe",
+					"WhiteLabelAirport",
+					"WhiteLabelAirportCli",
+					"WhiteLabelAirportCli.exe"
 					],
 				"outbound": "direct-out"
 			}

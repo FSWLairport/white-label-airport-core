@@ -8,7 +8,7 @@ import (
 	runtimeDebug "runtime/debug"
 	"time"
 
-	"github.com/hiddify/hiddify-core/v2/service_manager"
+	"github.com/pppwaw/white-label-airport-core/v2/service_manager"
 
 	B "github.com/sagernet/sing-box"
 	"github.com/sagernet/sing-box/common/urltest"
@@ -29,7 +29,7 @@ var (
 	statusPropagationPort int64
 )
 
-func InitHiddifyService() error {
+func InitWhiteLabelAirportService() error {
 	return service_manager.StartServices()
 }
 
@@ -63,7 +63,7 @@ func Setup(basePath string, workingPath string, tempPath string, statusPort int6
 	if err != nil {
 		return E.Cause(err, "create logger")
 	}
-	return InitHiddifyService()
+	return InitWhiteLabelAirportService()
 }
 
 func NewService(options option.Options) (*libbox.BoxService, error) {

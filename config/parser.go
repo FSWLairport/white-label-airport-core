@@ -31,7 +31,7 @@ func ParseConfig(path string, debug bool) ([]byte, error) {
 	return ParseConfigContent(string(content), debug, nil, false)
 }
 
-func ParseConfigContentToOptions(contentstr string, debug bool, configOpt *HiddifyOptions, fullConfig bool) (*option.Options, error) {
+func ParseConfigContentToOptions(contentstr string, debug bool, configOpt *WhiteLabelAirportOptions, fullConfig bool) (*option.Options, error) {
 	content, err := ParseConfigContent(contentstr, debug, configOpt, fullConfig)
 	if err != nil {
 		return nil, err
@@ -44,9 +44,9 @@ func ParseConfigContentToOptions(contentstr string, debug bool, configOpt *Hiddi
 	return &options, nil
 }
 
-func ParseConfigContent(contentstr string, debug bool, configOpt *HiddifyOptions, fullConfig bool) ([]byte, error) {
+func ParseConfigContent(contentstr string, debug bool, configOpt *WhiteLabelAirportOptions, fullConfig bool) ([]byte, error) {
 	if configOpt == nil {
-		configOpt = DefaultHiddifyOptions()
+		configOpt = DefaultWhiteLabelAirportOptions()
 	}
 	content := []byte(contentstr)
 	var jsonObj map[string]interface{} = make(map[string]interface{})
@@ -101,7 +101,7 @@ func ParseConfigContent(contentstr string, debug bool, configOpt *HiddifyOptions
 	return nil, fmt.Errorf("unable to determine config format")
 }
 
-func patchConfig(content []byte, name string, configOpt *HiddifyOptions) ([]byte, error) {
+func patchConfig(content []byte, name string, configOpt *WhiteLabelAirportOptions) ([]byte, error) {
 	options := option.Options{}
 	err := json.Unmarshal(content, &options)
 	if err != nil {

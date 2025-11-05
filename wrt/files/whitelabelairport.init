@@ -3,8 +3,8 @@
 USE_PROCD=1
 START=99
 
-NAME="hiddify"
-PROG="/usr/bin/hiddify-cli"
+NAME="whitelabelairport"
+PROG="/usr/bin/whitelabelairport-cli"
  
  
 start_service() {

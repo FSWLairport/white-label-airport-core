@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"log"
 
-	pb "github.com/hiddify/hiddify-core/hiddifyrpc"
-	"github.com/hiddify/hiddify-core/v2/db"
+	"github.com/pppwaw/white-label-airport-core/v2/db"
+	pb "github.com/pppwaw/white-label-airport-core/whitelabelairportrpc"
 	"google.golang.org/grpc"
 )
 

@@ -8,8 +8,8 @@ import (
 	"log"
 	"net"
 
-	"github.com/hiddify/hiddify-core/extension"
-	pb "github.com/hiddify/hiddify-core/hiddifyrpc"
+	"github.com/pppwaw/white-label-airport-core/extension"
+	pb "github.com/pppwaw/white-label-airport-core/whitelabelairportrpc"
 
 	"google.golang.org/grpc"
 )

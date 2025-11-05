@@ -13,16 +13,16 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/hiddify/hiddify-core/config"
-	pb "github.com/hiddify/hiddify-core/hiddifyrpc"
+	"github.com/pppwaw/white-label-airport-core/config"
+	pb "github.com/pppwaw/white-label-airport-core/whitelabelairportrpc"
 
 	"github.com/sagernet/sing-box/option"
 )
 
-func RunStandalone(hiddifySettingPath string, configPath string, defaultConfig config.HiddifyOptions) error {
+func RunStandalone(whitelabelairportSettingPath string, configPath string, defaultConfig config.WhiteLabelAirportOptions) error {
 	fmt.Println("Running in standalone mode")
 	useFlutterBridge = false
-	current, err := readAndBuildConfig(hiddifySettingPath, configPath, &defaultConfig)
+	current, err := readAndBuildConfig(whitelabelairportSettingPath, configPath, &defaultConfig)
 	if err != nil {
 		fmt.Printf("Error in read and build config %v", err)
 		return err
@@ -34,7 +34,7 @@ func RunStandalone(hiddifySettingPath string, configPath string, defaultConfig c
 		DelayStart:             false,
 		EnableRawConfig:        true,
 	})
-	go updateConfigInterval(current, hiddifySettingPath, configPath)
+	go updateConfigInterval(current, whitelabelairportSettingPath, configPath)
 
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, os.Interrupt, syscall.SIGTERM)
@@ -48,12 +48,12 @@ func RunStandalone(hiddifySettingPath string, configPath string, defaultConfig c
 }
 
 type ConfigResult struct {
-	Config                string
-	RefreshInterval       int
-	HiddifyHiddifyOptions *config.HiddifyOptions
+	Config                                    string
+	RefreshInterval                           int
+	WhiteLabelAirportWhiteLabelAirportOptions *config.WhiteLabelAirportOptions
 }
 
-func readAndBuildConfig(hiddifySettingPath string, configPath string, defaultConfig *config.HiddifyOptions) (ConfigResult, error) {
+func readAndBuildConfig(whitelabelairportSettingPath string, configPath string, defaultConfig *config.WhiteLabelAirportOptions) (ConfigResult, error) {
 	var result ConfigResult
 
 	result, err := readConfigContent(configPath)
@@ -61,21 +61,21 @@ func readAndBuildConfig(hiddifySettingPath string, configPath string, defaultCon
 		return result, err
 	}
 
-	hiddifyconfig := config.DefaultHiddifyOptions()
+	whitelabelairportconfig := config.DefaultWhiteLabelAirportOptions()
 
 	if defaultConfig != nil {
-		hiddifyconfig = defaultConfig
+		whitelabelairportconfig = defaultConfig
 	}
 
-	if hiddifySettingPath != "" {
-		hiddifyconfig, err = ReadHiddifyOptionsAt(hiddifySettingPath)
+	if whitelabelairportSettingPath != "" {
+		whitelabelairportconfig, err = ReadWhiteLabelAirportOptionsAt(whitelabelairportSettingPath)
 		if err != nil {
 			return result, err
 		}
 	}
 
-	result.HiddifyHiddifyOptions = hiddifyconfig
-	result.Config, err = buildConfig(result.Config, *result.HiddifyHiddifyOptions)
+	result.WhiteLabelAirportWhiteLabelAirportOptions = whitelabelairportconfig
+	result.Config, err = buildConfig(result.Config, *result.WhiteLabelAirportWhiteLabelAirportOptions)
 	if err != nil {
 		return result, err
 	}
@@ -96,7 +96,7 @@ func readConfigContent(configPath string) (ConfigResult, error) {
 			fmt.Println("Error creating request:", err)
 			return ConfigResult{}, err
 		}
-		req.Header.Set("User-Agent", "HiddifyNext/2.3.1 ("+runtime.GOOS+") like ClashMeta v2ray sing-box")
+		req.Header.Set("User-Agent", "WhiteLabelAirport/2.3.1 ("+runtime.GOOS+") like ClashMeta v2ray sing-box")
 		resp, err := client.Do(req)
 		if err != nil {
 			fmt.Println("Error making GET request:", err)
@@ -151,7 +151,7 @@ func extractRefreshInterval(header http.Header, bodyStr string) (int, error) {
 	return 0, nil
 }
 
-func buildConfig(configContent string, options config.HiddifyOptions) (string, error) {
+func buildConfig(configContent string, options config.WhiteLabelAirportOptions) (string, error) {
 	parsedContent, err := config.ParseConfigContent(configContent, true, &options, false)
 	if err != nil {
 		return "", fmt.Errorf("failed to parse config content: %w", err)
@@ -188,14 +188,14 @@ func buildConfig(configContent string, options config.HiddifyOptions) (string, e
 	return configStr, nil
 }
 
-func updateConfigInterval(current ConfigResult, hiddifySettingPath string, configPath string) {
+func updateConfigInterval(current ConfigResult, whitelabelairportSettingPath string, configPath string) {
 	if current.RefreshInterval <= 0 {
 		return
 	}
 
 	for {
 		<-time.After(time.Duration(current.RefreshInterval) * time.Hour)
-		new, err := readAndBuildConfig(hiddifySettingPath, configPath, current.HiddifyHiddifyOptions)
+		new, err := readAndBuildConfig(whitelabelairportSettingPath, configPath, current.WhiteLabelAirportWhiteLabelAirportOptions)
 		if err != nil {
 			continue
 		}
@@ -222,12 +222,12 @@ func readConfigBytes(content []byte) (*option.Options, error) {
 	return &options, nil
 }
 
-func ReadHiddifyOptionsAt(path string) (*config.HiddifyOptions, error) {
+func ReadWhiteLabelAirportOptionsAt(path string) (*config.WhiteLabelAirportOptions, error) {
 	content, err := os.ReadFile(path)
 	if err != nil {
 		return nil, err
 	}
-	var options config.HiddifyOptions
+	var options config.WhiteLabelAirportOptions
 	err = json.Unmarshal(content, &options)
 	if err != nil {
 		return nil, err

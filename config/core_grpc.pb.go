@@ -8,6 +8,7 @@ package config
 
 import (
 	context "context"
+
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -19,8 +20,8 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	CoreService_ParseConfig_FullMethodName        = "/HiddifyOptions.CoreService/ParseConfig"
-	CoreService_GenerateFullConfig_FullMethodName = "/HiddifyOptions.CoreService/GenerateFullConfig"
+	CoreService_ParseConfig_FullMethodName        = "/WhiteLabelAirportOptions.CoreService/ParseConfig"
+	CoreService_GenerateFullConfig_FullMethodName = "/WhiteLabelAirportOptions.CoreService/GenerateFullConfig"
 )
 
 // CoreServiceClient is the client API for CoreService service.
@@ -129,7 +130,7 @@ func _CoreService_GenerateFullConfig_Handler(srv interface{}, ctx context.Contex
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var CoreService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "HiddifyOptions.CoreService",
+	ServiceName: "WhiteLabelAirportOptions.CoreService",
 	HandlerType: (*CoreServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

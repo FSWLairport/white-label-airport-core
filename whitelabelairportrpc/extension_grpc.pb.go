@@ -4,10 +4,11 @@
 // - protoc             v5.28.0
 // source: extension.proto
 
-package hiddifyrpc
+package whitelabelairportrpc
 
 import (
 	context "context"
+
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -19,12 +20,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ExtensionHostService_ListExtensions_FullMethodName = "/hiddifyrpc.ExtensionHostService/ListExtensions"
-	ExtensionHostService_Connect_FullMethodName        = "/hiddifyrpc.ExtensionHostService/Connect"
-	ExtensionHostService_EditExtension_FullMethodName  = "/hiddifyrpc.ExtensionHostService/EditExtension"
-	ExtensionHostService_SubmitForm_FullMethodName     = "/hiddifyrpc.ExtensionHostService/SubmitForm"
-	ExtensionHostService_Close_FullMethodName          = "/hiddifyrpc.ExtensionHostService/Close"
-	ExtensionHostService_GetUI_FullMethodName          = "/hiddifyrpc.ExtensionHostService/GetUI"
+	ExtensionHostService_ListExtensions_FullMethodName = "/whitelabelairportrpc.ExtensionHostService/ListExtensions"
+	ExtensionHostService_Connect_FullMethodName        = "/whitelabelairportrpc.ExtensionHostService/Connect"
+	ExtensionHostService_EditExtension_FullMethodName  = "/whitelabelairportrpc.ExtensionHostService/EditExtension"
+	ExtensionHostService_SubmitForm_FullMethodName     = "/whitelabelairportrpc.ExtensionHostService/SubmitForm"
+	ExtensionHostService_Close_FullMethodName          = "/whitelabelairportrpc.ExtensionHostService/Close"
+	ExtensionHostService_GetUI_FullMethodName          = "/whitelabelairportrpc.ExtensionHostService/GetUI"
 )
 
 // ExtensionHostServiceClient is the client API for ExtensionHostService service.
@@ -280,7 +281,7 @@ func _ExtensionHostService_GetUI_Handler(srv interface{}, ctx context.Context, d
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ExtensionHostService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "hiddifyrpc.ExtensionHostService",
+	ServiceName: "whitelabelairportrpc.ExtensionHostService",
 	HandlerType: (*ExtensionHostServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

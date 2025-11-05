@@ -5,9 +5,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/hiddify/hiddify-core/config"
+	"github.com/pppwaw/white-label-airport-core/config"
 
-	"github.com/hiddify/hiddify-core/v2"
+	v2 "github.com/pppwaw/white-label-airport-core/v2"
 
 	_ "github.com/sagernet/gomobile"
 	"github.com/sagernet/sing-box/option"
@@ -26,7 +26,7 @@ func Parse(path string, tempPath string, debug bool) error {
 	return os.WriteFile(path, config, 0o644)
 }
 
-func BuildConfig(path string, HiddifyOptionsJson string) (string, error) {
+func BuildConfig(path string, WhiteLabelAirportOptionsJson string) (string, error) {
 	os.Chdir(filepath.Dir(path))
 	fileContent, err := os.ReadFile(path)
 	if err != nil {
@@ -37,26 +37,26 @@ func BuildConfig(path string, HiddifyOptionsJson string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	HiddifyOptions := &config.HiddifyOptions{}
-	err = json.Unmarshal([]byte(HiddifyOptionsJson), HiddifyOptions)
+	WhiteLabelAirportOptions := &config.WhiteLabelAirportOptions{}
+	err = json.Unmarshal([]byte(WhiteLabelAirportOptionsJson), WhiteLabelAirportOptions)
 	if err != nil {
 		return "", nil
 	}
-	if HiddifyOptions.Warp.WireguardConfigStr != "" {
-		err := json.Unmarshal([]byte(HiddifyOptions.Warp.WireguardConfigStr), &HiddifyOptions.Warp.WireguardConfig)
+	if WhiteLabelAirportOptions.Warp.WireguardConfigStr != "" {
+		err := json.Unmarshal([]byte(WhiteLabelAirportOptions.Warp.WireguardConfigStr), &WhiteLabelAirportOptions.Warp.WireguardConfig)
 		if err != nil {
 			return "", err
 		}
 	}
 
-	if HiddifyOptions.Warp2.WireguardConfigStr != "" {
-		err := json.Unmarshal([]byte(HiddifyOptions.Warp2.WireguardConfigStr), &HiddifyOptions.Warp2.WireguardConfig)
+	if WhiteLabelAirportOptions.Warp2.WireguardConfigStr != "" {
+		err := json.Unmarshal([]byte(WhiteLabelAirportOptions.Warp2.WireguardConfigStr), &WhiteLabelAirportOptions.Warp2.WireguardConfig)
 		if err != nil {
 			return "", err
 		}
 	}
 
-	return config.BuildConfigJson(*HiddifyOptions, options)
+	return config.BuildConfigJson(*WhiteLabelAirportOptions, options)
 }
 
 func GenerateWarpConfig(licenseKey string, accountId string, accessToken string) (string, error) {

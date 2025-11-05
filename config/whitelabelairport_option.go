@@ -5,7 +5,7 @@ import (
 	dns "github.com/sagernet/sing-dns"
 )
 
-type HiddifyOptions struct {
+type WhiteLabelAirportOptions struct {
 	EnableFullConfig        bool   `json:"enable-full-config"`
 	LogLevel                string `json:"log-level"`
 	LogFile                 string `json:"log-file"`
@@ -94,8 +94,8 @@ type WarpOptions struct {
 	Account            WarpAccount
 }
 
-func DefaultHiddifyOptions() *HiddifyOptions {
-	return &HiddifyOptions{
+func DefaultWhiteLabelAirportOptions() *WhiteLabelAirportOptions {
+	return &WhiteLabelAirportOptions{
 		DNSOptions: DNSOptions{
 			RemoteDnsAddress:        "1.1.1.1",
 			RemoteDnsDomainStrategy: option.DomainStrategy(dns.DomainStrategyAsIS),

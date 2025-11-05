@@ -4,13 +4,14 @@
 // 	protoc        v5.28.0
 // source: extension.proto
 
-package hiddifyrpc
+package whitelabelairportrpc
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -78,7 +79,7 @@ type ExtensionActionResult struct {
 	unknownFields protoimpl.UnknownFields
 
 	ExtensionId string       `protobuf:"bytes,1,opt,name=extension_id,json=extensionId,proto3" json:"extension_id,omitempty"`
-	Code        ResponseCode `protobuf:"varint,2,opt,name=code,proto3,enum=hiddifyrpc.ResponseCode" json:"code,omitempty"`
+	Code        ResponseCode `protobuf:"varint,2,opt,name=code,proto3,enum=whitelabelairportrpc.ResponseCode" json:"code,omitempty"`
 	Message     string       `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
 }
 
@@ -431,7 +432,7 @@ type ExtensionResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Type        ExtensionResponseType `protobuf:"varint,1,opt,name=type,proto3,enum=hiddifyrpc.ExtensionResponseType" json:"type,omitempty"`
+	Type        ExtensionResponseType `protobuf:"varint,1,opt,name=type,proto3,enum=whitelabelairportrpc.ExtensionResponseType" json:"type,omitempty"`
 	ExtensionId string                `protobuf:"bytes,2,opt,name=extension_id,json=extensionId,proto3" json:"extension_id,omitempty"`
 	JsonUi      string                `protobuf:"bytes,3,opt,name=json_ui,json=jsonUi,proto3" json:"json_ui,omitempty"`
 }
@@ -607,37 +608,37 @@ func file_extension_proto_rawDescGZIP() []byte {
 var file_extension_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_extension_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_extension_proto_goTypes = []any{
-	(ExtensionResponseType)(0),       // 0: hiddifyrpc.ExtensionResponseType
-	(*ExtensionActionResult)(nil),    // 1: hiddifyrpc.ExtensionActionResult
-	(*ExtensionList)(nil),            // 2: hiddifyrpc.ExtensionList
-	(*EditExtensionRequest)(nil),     // 3: hiddifyrpc.EditExtensionRequest
-	(*Extension)(nil),                // 4: hiddifyrpc.Extension
-	(*ExtensionRequest)(nil),         // 5: hiddifyrpc.ExtensionRequest
-	(*SendExtensionDataRequest)(nil), // 6: hiddifyrpc.SendExtensionDataRequest
-	(*ExtensionResponse)(nil),        // 7: hiddifyrpc.ExtensionResponse
-	nil,                              // 8: hiddifyrpc.ExtensionRequest.DataEntry
-	nil,                              // 9: hiddifyrpc.SendExtensionDataRequest.DataEntry
-	(ResponseCode)(0),                // 10: hiddifyrpc.ResponseCode
-	(*Empty)(nil),                    // 11: hiddifyrpc.Empty
+	(ExtensionResponseType)(0),       // 0: whitelabelairportrpc.ExtensionResponseType
+	(*ExtensionActionResult)(nil),    // 1: whitelabelairportrpc.ExtensionActionResult
+	(*ExtensionList)(nil),            // 2: whitelabelairportrpc.ExtensionList
+	(*EditExtensionRequest)(nil),     // 3: whitelabelairportrpc.EditExtensionRequest
+	(*Extension)(nil),                // 4: whitelabelairportrpc.Extension
+	(*ExtensionRequest)(nil),         // 5: whitelabelairportrpc.ExtensionRequest
+	(*SendExtensionDataRequest)(nil), // 6: whitelabelairportrpc.SendExtensionDataRequest
+	(*ExtensionResponse)(nil),        // 7: whitelabelairportrpc.ExtensionResponse
+	nil,                              // 8: whitelabelairportrpc.ExtensionRequest.DataEntry
+	nil,                              // 9: whitelabelairportrpc.SendExtensionDataRequest.DataEntry
+	(ResponseCode)(0),                // 10: whitelabelairportrpc.ResponseCode
+	(*Empty)(nil),                    // 11: whitelabelairportrpc.Empty
 }
 var file_extension_proto_depIdxs = []int32{
-	10, // 0: hiddifyrpc.ExtensionActionResult.code:type_name -> hiddifyrpc.ResponseCode
-	4,  // 1: hiddifyrpc.ExtensionList.extensions:type_name -> hiddifyrpc.Extension
-	8,  // 2: hiddifyrpc.ExtensionRequest.data:type_name -> hiddifyrpc.ExtensionRequest.DataEntry
-	9,  // 3: hiddifyrpc.SendExtensionDataRequest.data:type_name -> hiddifyrpc.SendExtensionDataRequest.DataEntry
-	0,  // 4: hiddifyrpc.ExtensionResponse.type:type_name -> hiddifyrpc.ExtensionResponseType
-	11, // 5: hiddifyrpc.ExtensionHostService.ListExtensions:input_type -> hiddifyrpc.Empty
-	5,  // 6: hiddifyrpc.ExtensionHostService.Connect:input_type -> hiddifyrpc.ExtensionRequest
-	3,  // 7: hiddifyrpc.ExtensionHostService.EditExtension:input_type -> hiddifyrpc.EditExtensionRequest
-	6,  // 8: hiddifyrpc.ExtensionHostService.SubmitForm:input_type -> hiddifyrpc.SendExtensionDataRequest
-	5,  // 9: hiddifyrpc.ExtensionHostService.Close:input_type -> hiddifyrpc.ExtensionRequest
-	5,  // 10: hiddifyrpc.ExtensionHostService.GetUI:input_type -> hiddifyrpc.ExtensionRequest
-	2,  // 11: hiddifyrpc.ExtensionHostService.ListExtensions:output_type -> hiddifyrpc.ExtensionList
-	7,  // 12: hiddifyrpc.ExtensionHostService.Connect:output_type -> hiddifyrpc.ExtensionResponse
-	1,  // 13: hiddifyrpc.ExtensionHostService.EditExtension:output_type -> hiddifyrpc.ExtensionActionResult
-	1,  // 14: hiddifyrpc.ExtensionHostService.SubmitForm:output_type -> hiddifyrpc.ExtensionActionResult
-	1,  // 15: hiddifyrpc.ExtensionHostService.Close:output_type -> hiddifyrpc.ExtensionActionResult
-	1,  // 16: hiddifyrpc.ExtensionHostService.GetUI:output_type -> hiddifyrpc.ExtensionActionResult
+	10, // 0: whitelabelairportrpc.ExtensionActionResult.code:type_name -> whitelabelairportrpc.ResponseCode
+	4,  // 1: whitelabelairportrpc.ExtensionList.extensions:type_name -> whitelabelairportrpc.Extension
+	8,  // 2: whitelabelairportrpc.ExtensionRequest.data:type_name -> whitelabelairportrpc.ExtensionRequest.DataEntry
+	9,  // 3: whitelabelairportrpc.SendExtensionDataRequest.data:type_name -> whitelabelairportrpc.SendExtensionDataRequest.DataEntry
+	0,  // 4: whitelabelairportrpc.ExtensionResponse.type:type_name -> whitelabelairportrpc.ExtensionResponseType
+	11, // 5: whitelabelairportrpc.ExtensionHostService.ListExtensions:input_type -> whitelabelairportrpc.Empty
+	5,  // 6: whitelabelairportrpc.ExtensionHostService.Connect:input_type -> whitelabelairportrpc.ExtensionRequest
+	3,  // 7: whitelabelairportrpc.ExtensionHostService.EditExtension:input_type -> whitelabelairportrpc.EditExtensionRequest
+	6,  // 8: whitelabelairportrpc.ExtensionHostService.SubmitForm:input_type -> whitelabelairportrpc.SendExtensionDataRequest
+	5,  // 9: whitelabelairportrpc.ExtensionHostService.Close:input_type -> whitelabelairportrpc.ExtensionRequest
+	5,  // 10: whitelabelairportrpc.ExtensionHostService.GetUI:input_type -> whitelabelairportrpc.ExtensionRequest
+	2,  // 11: whitelabelairportrpc.ExtensionHostService.ListExtensions:output_type -> whitelabelairportrpc.ExtensionList
+	7,  // 12: whitelabelairportrpc.ExtensionHostService.Connect:output_type -> whitelabelairportrpc.ExtensionResponse
+	1,  // 13: whitelabelairportrpc.ExtensionHostService.EditExtension:output_type -> whitelabelairportrpc.ExtensionActionResult
+	1,  // 14: whitelabelairportrpc.ExtensionHostService.SubmitForm:output_type -> whitelabelairportrpc.ExtensionActionResult
+	1,  // 15: whitelabelairportrpc.ExtensionHostService.Close:output_type -> whitelabelairportrpc.ExtensionActionResult
+	1,  // 16: whitelabelairportrpc.ExtensionHostService.GetUI:output_type -> whitelabelairportrpc.ExtensionActionResult
 	11, // [11:17] is the sub-list for method output_type
 	5,  // [5:11] is the sub-list for method input_type
 	5,  // [5:5] is the sub-list for extension type_name

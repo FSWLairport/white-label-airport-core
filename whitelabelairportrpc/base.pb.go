@@ -4,13 +4,14 @@
 // 	protoc        v5.28.0
 // source: base.proto
 
-package hiddifyrpc
+package whitelabelairportrpc
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -229,10 +230,10 @@ func file_base_proto_rawDescGZIP() []byte {
 var file_base_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_base_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_base_proto_goTypes = []any{
-	(ResponseCode)(0),     // 0: hiddifyrpc.ResponseCode
-	(*HelloRequest)(nil),  // 1: hiddifyrpc.HelloRequest
-	(*HelloResponse)(nil), // 2: hiddifyrpc.HelloResponse
-	(*Empty)(nil),         // 3: hiddifyrpc.Empty
+	(ResponseCode)(0),     // 0: whitelabelairportrpc.ResponseCode
+	(*HelloRequest)(nil),  // 1: whitelabelairportrpc.HelloRequest
+	(*HelloResponse)(nil), // 2: whitelabelairportrpc.HelloResponse
+	(*Empty)(nil),         // 3: whitelabelairportrpc.Empty
 }
 var file_base_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type

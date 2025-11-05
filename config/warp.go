@@ -9,11 +9,11 @@ import (
 	"strings"
 
 	"github.com/bepass-org/warp-plus/warp"
-	"github.com/hiddify/hiddify-core/v2/common"
+	"github.com/pppwaw/white-label-airport-core/v2/common"
 	C "github.com/sagernet/sing-box/constant"
 
 	// "github.com/bepass-org/wireguard-go/warp"
-	"github.com/hiddify/hiddify-core/v2/db"
+	"github.com/pppwaw/white-label-airport-core/v2/db"
 
 	"github.com/sagernet/sing-box/option"
 	T "github.com/sagernet/sing-box/option"
@@ -174,7 +174,7 @@ func getOrGenerateWarpLocallyIfNeeded(warpOptions *WarpOptions) WarpWireguardCon
 	return *wireguardConfig
 }
 
-func patchWarp(base *option.Outbound, configOpt *HiddifyOptions, final bool, staticIpsDns map[string][]string) error {
+func patchWarp(base *option.Outbound, configOpt *WhiteLabelAirportOptions, final bool, staticIpsDns map[string][]string) error {
 	if base.Type == C.TypeCustom {
 		if warp, ok := base.CustomOptions["warp"].(map[string]interface{}); ok {
 			key, _ := warp["key"].(string)

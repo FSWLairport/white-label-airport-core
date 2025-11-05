@@ -3,11 +3,11 @@ package extension
 import (
 	"encoding/json"
 
-	"github.com/hiddify/hiddify-core/config"
-	"github.com/hiddify/hiddify-core/extension/ui"
-	pb "github.com/hiddify/hiddify-core/hiddifyrpc"
-	"github.com/hiddify/hiddify-core/v2/db"
 	"github.com/jellydator/validation"
+	"github.com/pppwaw/white-label-airport-core/config"
+	"github.com/pppwaw/white-label-airport-core/extension/ui"
+	"github.com/pppwaw/white-label-airport-core/v2/db"
+	pb "github.com/pppwaw/white-label-airport-core/whitelabelairportrpc"
 	"github.com/sagernet/sing-box/log"
 	"github.com/sagernet/sing-box/option"
 )
@@ -18,7 +18,7 @@ type Extension interface {
 	Close() error
 	UpdateUI(form ui.Form) error
 
-	BeforeAppConnect(hiddifySettings *config.HiddifyOptions, singconfig *option.Options) error
+	BeforeAppConnect(whitelabelairportSettings *config.WhiteLabelAirportOptions, singconfig *option.Options) error
 
 	StoreData()
 
@@ -37,7 +37,7 @@ type Base[T any] struct {
 // func (b *Base) mustEmbdedBaseExtension() {
 // }
 
-func (b *Base[T]) BeforeAppConnect(hiddifySettings *config.HiddifyOptions, singconfig *option.Options) error {
+func (b *Base[T]) BeforeAppConnect(whitelabelairportSettings *config.WhiteLabelAirportOptions, singconfig *option.Options) error {
 	return nil
 }
 

@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/hiddify/hiddify-core/config"
+	"github.com/pppwaw/white-label-airport-core/config"
 	"golang.org/x/net/proxy"
 
 	"github.com/sagernet/sing-box/experimental/libbox"
@@ -24,33 +24,33 @@ func getRandomAvailblePort() uint16 {
 	return uint16(listener.Addr().(*net.TCPAddr).Port)
 }
 
-func RunInstanceString(hiddifySettings *config.HiddifyOptions, proxiesInput string) (*HiddifyService, error) {
-	if hiddifySettings == nil {
-		hiddifySettings = config.DefaultHiddifyOptions()
+func RunInstanceString(whitelabelairportSettings *config.WhiteLabelAirportOptions, proxiesInput string) (*WhiteLabelAirportService, error) {
+	if whitelabelairportSettings == nil {
+		whitelabelairportSettings = config.DefaultWhiteLabelAirportOptions()
 	}
-	singconfigs, err := config.ParseConfigContentToOptions(proxiesInput, true, hiddifySettings, false)
+	singconfigs, err := config.ParseConfigContentToOptions(proxiesInput, true, whitelabelairportSettings, false)
 	if err != nil {
 		return nil, err
 	}
-	return RunInstance(hiddifySettings, singconfigs)
+	return RunInstance(whitelabelairportSettings, singconfigs)
 }
 
-func RunInstance(hiddifySettings *config.HiddifyOptions, singconfig *option.Options) (*HiddifyService, error) {
-	if hiddifySettings == nil {
-		hiddifySettings = config.DefaultHiddifyOptions()
+func RunInstance(whitelabelairportSettings *config.WhiteLabelAirportOptions, singconfig *option.Options) (*WhiteLabelAirportService, error) {
+	if whitelabelairportSettings == nil {
+		whitelabelairportSettings = config.DefaultWhiteLabelAirportOptions()
 	}
-	hiddifySettings.EnableClashApi = false
-	hiddifySettings.InboundOptions.MixedPort = getRandomAvailblePort()
-	hiddifySettings.InboundOptions.EnableTun = false
-	hiddifySettings.InboundOptions.EnableTunService = false
-	hiddifySettings.InboundOptions.SetSystemProxy = false
-	hiddifySettings.InboundOptions.TProxyPort = 0
-	hiddifySettings.InboundOptions.LocalDnsPort = 0
-	hiddifySettings.Region = "other"
-	hiddifySettings.BlockAds = false
-	hiddifySettings.LogFile = "/dev/null"
+	whitelabelairportSettings.EnableClashApi = false
+	whitelabelairportSettings.InboundOptions.MixedPort = getRandomAvailblePort()
+	whitelabelairportSettings.InboundOptions.EnableTun = false
+	whitelabelairportSettings.InboundOptions.EnableTunService = false
+	whitelabelairportSettings.InboundOptions.SetSystemProxy = false
+	whitelabelairportSettings.InboundOptions.TProxyPort = 0
+	whitelabelairportSettings.InboundOptions.LocalDnsPort = 0
+	whitelabelairportSettings.Region = "other"
+	whitelabelairportSettings.BlockAds = false
+	whitelabelairportSettings.LogFile = "/dev/null"
 
-	finalConfigs, err := config.BuildConfig(*hiddifySettings, *singconfig)
+	finalConfigs, err := config.BuildConfig(*whitelabelairportSettings, *singconfig)
 	if err != nil {
 		return nil, err
 	}
@@ -64,27 +64,27 @@ func RunInstance(hiddifySettings *config.HiddifyOptions, singconfig *option.Opti
 		return nil, err
 	}
 	<-time.After(250 * time.Millisecond)
-	hservice := &HiddifyService{libbox: instance, ListenPort: hiddifySettings.InboundOptions.MixedPort}
+	hservice := &WhiteLabelAirportService{libbox: instance, ListenPort: whitelabelairportSettings.InboundOptions.MixedPort}
 	hservice.PingCloudflare()
 	return hservice, nil
 }
 
-type HiddifyService struct {
+type WhiteLabelAirportService struct {
 	libbox     *libbox.BoxService
 	ListenPort uint16
 }
 
 // dialer, err := s.libbox.GetInstance().Router().Dialer(context.Background())
 
-func (s *HiddifyService) Close() error {
+func (s *WhiteLabelAirportService) Close() error {
 	return s.libbox.Close()
 }
 
-func (s *HiddifyService) GetContent(url string) (string, error) {
+func (s *WhiteLabelAirportService) GetContent(url string) (string, error) {
 	return s.ContentFromURL("GET", url, 10*time.Second)
 }
 
-func (s *HiddifyService) ContentFromURL(method string, url string, timeout time.Duration) (string, error) {
+func (s *WhiteLabelAirportService) ContentFromURL(method string, url string, timeout time.Duration) (string, error) {
 	if method == "" {
 		return "", fmt.Errorf("empty method")
 	}
@@ -133,15 +133,15 @@ func (s *HiddifyService) ContentFromURL(method string, url string, timeout time.
 	return string(body), nil
 }
 
-func (s *HiddifyService) PingCloudflare() (time.Duration, error) {
+func (s *WhiteLabelAirportService) PingCloudflare() (time.Duration, error) {
 	return s.Ping("http://cp.cloudflare.com")
 }
 
-// func (s *HiddifyService) RawConnection(ctx context.Context, url string) (net.Conn, error) {
+// func (s *WhiteLabelAirportService) RawConnection(ctx context.Context, url string) (net.Conn, error) {
 // 	return
 // }
 
-func (s *HiddifyService) PingAverage(url string, count int) (time.Duration, error) {
+func (s *WhiteLabelAirportService) PingAverage(url string, count int) (time.Duration, error) {
 	if count <= 0 {
 		return -1, fmt.Errorf("count must be greater than 0")
 	}
@@ -161,7 +161,7 @@ func (s *HiddifyService) PingAverage(url string, count int) (time.Duration, erro
 	return time.Duration(sum / real_count * int(time.Millisecond)), nil
 }
 
-func (s *HiddifyService) Ping(url string) (time.Duration, error) {
+func (s *WhiteLabelAirportService) Ping(url string) (time.Duration, error) {
 	startTime := time.Now()
 	_, err := s.ContentFromURL("HEAD", url, 4*time.Second)
 	if err != nil {

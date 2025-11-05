@@ -41,7 +41,7 @@ const (
 
 var OutboundMainProxyTag = OutboundSelectTag
 
-func BuildConfigJson(configOpt HiddifyOptions, input option.Options) (string, error) {
+func BuildConfigJson(configOpt WhiteLabelAirportOptions, input option.Options) (string, error) {
 	options, err := BuildConfig(configOpt, input)
 	if err != nil {
 		return "", err
@@ -58,7 +58,7 @@ func BuildConfigJson(configOpt HiddifyOptions, input option.Options) (string, er
 }
 
 // TODO include selectors
-func BuildConfig(opt HiddifyOptions, input option.Options) (*option.Options, error) {
+func BuildConfig(opt WhiteLabelAirportOptions, input option.Options) (*option.Options, error) {
 	fmt.Printf("config options: %++v\n", opt)
 
 	var options option.Options
@@ -82,7 +82,7 @@ func BuildConfig(opt HiddifyOptions, input option.Options) (*option.Options, err
 	return &options, nil
 }
 
-func addForceDirect(options *option.Options, opt *HiddifyOptions, directDNSDomains map[string]bool) {
+func addForceDirect(options *option.Options, opt *WhiteLabelAirportOptions, directDNSDomains map[string]bool) {
 	remoteDNSAddress := opt.RemoteDnsAddress
 	if strings.Contains(remoteDNSAddress, "://") {
 		remoteDNSAddress = strings.SplitAfter(remoteDNSAddress, "://")[1]
@@ -126,7 +126,7 @@ func addForceDirect(options *option.Options, opt *HiddifyOptions, directDNSDomai
 	}
 }
 
-func setOutbounds(options *option.Options, input *option.Options, opt *HiddifyOptions) error {
+func setOutbounds(options *option.Options, input *option.Options, opt *WhiteLabelAirportOptions) error {
 	directDNSDomains := make(map[string]bool)
 	var outbounds []option.Outbound
 	var tags []string
@@ -155,7 +155,7 @@ func setOutbounds(options *option.Options, input *option.Options, opt *HiddifyOp
 		if err != nil {
 			return fmt.Errorf("failed to generate warp config: %v", err)
 		}
-		out.Tag = "Hiddify Warp ✅"
+		out.Tag = "WhiteLabelAirport Warp ✅"
 		if opt.Warp.Mode == "warp_over_proxy" {
 			out.WireGuardOptions.Detour = OutboundSelectTag
 			OutboundMainProxyTag = out.Tag
@@ -188,7 +188,7 @@ func setOutbounds(options *option.Options, input *option.Options, opt *HiddifyOp
 			if !strings.Contains(out.Tag, "§hide§") {
 				tags = append(tags, out.Tag)
 			}
-			out = patchHiddifyWarpFromConfig(out, *opt)
+			out = patchWhiteLabelAirportWarpFromConfig(out, *opt)
 			outbounds = append(outbounds, out)
 		}
 	}
@@ -265,7 +265,7 @@ func setOutbounds(options *option.Options, input *option.Options, opt *HiddifyOp
 	return nil
 }
 
-func setClashAPI(options *option.Options, opt *HiddifyOptions) {
+func setClashAPI(options *option.Options, opt *WhiteLabelAirportOptions) {
 	if opt.EnableClashApi {
 		if opt.ClashApiSecret == "" {
 			opt.ClashApiSecret = generateRandomString(16)
@@ -284,7 +284,7 @@ func setClashAPI(options *option.Options, opt *HiddifyOptions) {
 	}
 }
 
-func setLog(options *option.Options, opt *HiddifyOptions) {
+func setLog(options *option.Options, opt *WhiteLabelAirportOptions) {
 	options.Log = &option.LogOptions{
 		Level:        opt.LogLevel,
 		Output:       opt.LogFile,
@@ -294,7 +294,7 @@ func setLog(options *option.Options, opt *HiddifyOptions) {
 	}
 }
 
-func setInbound(options *option.Options, opt *HiddifyOptions) {
+func setInbound(options *option.Options, opt *WhiteLabelAirportOptions) {
 	var inboundDomainStrategy option.DomainStrategy
 	if !opt.ResolveDestination {
 		inboundDomainStrategy = option.DomainStrategy(dns.DomainStrategyAsIS)
@@ -387,7 +387,7 @@ func setInbound(options *option.Options, opt *HiddifyOptions) {
 	)
 }
 
-func setDns(options *option.Options, opt *HiddifyOptions) {
+func setDns(options *option.Options, opt *WhiteLabelAirportOptions) {
 	options.DNS = &option.DNSOptions{
 		StaticIPs: map[string][]string{},
 		DNSClientOptions: option.DNSClientOptions{
@@ -432,7 +432,7 @@ func setDns(options *option.Options, opt *HiddifyOptions) {
 	}
 }
 
-func setFakeDns(options *option.Options, opt *HiddifyOptions) {
+func setFakeDns(options *option.Options, opt *WhiteLabelAirportOptions) {
 	if opt.EnableFakeDNS {
 		inet4Range := netip.MustParsePrefix("198.18.0.0/15")
 		inet6Range := netip.MustParsePrefix("fc00::/18")
@@ -464,7 +464,7 @@ func setFakeDns(options *option.Options, opt *HiddifyOptions) {
 	}
 }
 
-func setRoutingOptions(options *option.Options, opt *HiddifyOptions) {
+func setRoutingOptions(options *option.Options, opt *WhiteLabelAirportOptions) {
 	dnsRules := []option.DefaultDNSRule{}
 	routeRules := []option.Rule{}
 	rulesets := []option.RuleSet{}
@@ -477,7 +477,7 @@ func setRoutingOptions(options *option.Options, opt *HiddifyOptions) {
 
 				DefaultOptions: option.DefaultRule{
 					Inbound:     []string{InboundTUNTag},
-					PackageName: []string{"app.hiddify.com"},
+					PackageName: []string{"whitelabelairport.sw.sb"},
 					Outbound:    OutboundBypassTag,
 				},
 			},
@@ -487,7 +487,7 @@ func setRoutingOptions(options *option.Options, opt *HiddifyOptions) {
 		// 	option.Rule{
 		// 		Type: C.RuleTypeDefault,
 		// 		DefaultOptions: option.DefaultRule{
-		// 			ProcessName: []string{"Hiddify", "Hiddify.exe", "HiddifyCli", "HiddifyCli.exe"},
+		// 			ProcessName: []string{"WhiteLabelAirport", "WhiteLabelAirport.exe", "WhiteLabelAirportCli", "WhiteLabelAirportCli.exe"},
 		// 			Outbound:    OutboundBypassTag,
 		// 		},
 		// 	},
@@ -751,52 +751,52 @@ func setRoutingOptions(options *option.Options, opt *HiddifyOptions) {
 	}
 }
 
-func patchHiddifyWarpFromConfig(out option.Outbound, opt HiddifyOptions) option.Outbound {
+func patchWhiteLabelAirportWarpFromConfig(out option.Outbound, opt WhiteLabelAirportOptions) option.Outbound {
 	if opt.Warp.EnableWarp && opt.Warp.Mode == "proxy_over_warp" {
 		if out.DirectOptions.Detour == "" {
-			out.DirectOptions.Detour = "Hiddify Warp ✅"
+			out.DirectOptions.Detour = "WhiteLabelAirport Warp ✅"
 		}
 		if out.HTTPOptions.Detour == "" {
-			out.HTTPOptions.Detour = "Hiddify Warp ✅"
+			out.HTTPOptions.Detour = "WhiteLabelAirport Warp ✅"
 		}
 		if out.Hysteria2Options.Detour == "" {
-			out.Hysteria2Options.Detour = "Hiddify Warp ✅"
+			out.Hysteria2Options.Detour = "WhiteLabelAirport Warp ✅"
 		}
 		if out.HysteriaOptions.Detour == "" {
-			out.HysteriaOptions.Detour = "Hiddify Warp ✅"
+			out.HysteriaOptions.Detour = "WhiteLabelAirport Warp ✅"
 		}
 		if out.SSHOptions.Detour == "" {
-			out.SSHOptions.Detour = "Hiddify Warp ✅"
+			out.SSHOptions.Detour = "WhiteLabelAirport Warp ✅"
 		}
 		if out.ShadowTLSOptions.Detour == "" {
-			out.ShadowTLSOptions.Detour = "Hiddify Warp ✅"
+			out.ShadowTLSOptions.Detour = "WhiteLabelAirport Warp ✅"
 		}
 		if out.ShadowsocksOptions.Detour == "" {
-			out.ShadowsocksOptions.Detour = "Hiddify Warp ✅"
+			out.ShadowsocksOptions.Detour = "WhiteLabelAirport Warp ✅"
 		}
 		if out.ShadowsocksROptions.Detour == "" {
-			out.ShadowsocksROptions.Detour = "Hiddify Warp ✅"
+			out.ShadowsocksROptions.Detour = "WhiteLabelAirport Warp ✅"
 		}
 		if out.SocksOptions.Detour == "" {
-			out.SocksOptions.Detour = "Hiddify Warp ✅"
+			out.SocksOptions.Detour = "WhiteLabelAirport Warp ✅"
 		}
 		if out.TUICOptions.Detour == "" {
-			out.TUICOptions.Detour = "Hiddify Warp ✅"
+			out.TUICOptions.Detour = "WhiteLabelAirport Warp ✅"
 		}
 		if out.TorOptions.Detour == "" {
-			out.TorOptions.Detour = "Hiddify Warp ✅"
+			out.TorOptions.Detour = "WhiteLabelAirport Warp ✅"
 		}
 		if out.TrojanOptions.Detour == "" {
-			out.TrojanOptions.Detour = "Hiddify Warp ✅"
+			out.TrojanOptions.Detour = "WhiteLabelAirport Warp ✅"
 		}
 		if out.VLESSOptions.Detour == "" {
-			out.VLESSOptions.Detour = "Hiddify Warp ✅"
+			out.VLESSOptions.Detour = "WhiteLabelAirport Warp ✅"
 		}
 		if out.VMessOptions.Detour == "" {
-			out.VMessOptions.Detour = "Hiddify Warp ✅"
+			out.VMessOptions.Detour = "WhiteLabelAirport Warp ✅"
 		}
 		if out.WireGuardOptions.Detour == "" {
-			out.WireGuardOptions.Detour = "Hiddify Warp ✅"
+			out.WireGuardOptions.Detour = "WhiteLabelAirport Warp ✅"
 		}
 	}
 	return out
@@ -858,7 +858,7 @@ func generateRandomString(length int) string {
 	randomBytes := make([]byte, bytesNeeded)
 	_, err := rand.Read(randomBytes)
 	if err != nil {
-		return "hiddify"
+		return "whitelabelairport"
 	}
 
 	// Encode random bytes to base64

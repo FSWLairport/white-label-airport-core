@@ -11,10 +11,10 @@ import (
 	"os"
 	"unsafe"
 
-	"github.com/hiddify/hiddify-core/bridge"
-	"github.com/hiddify/hiddify-core/config"
-	pb "github.com/hiddify/hiddify-core/hiddifyrpc"
-	v2 "github.com/hiddify/hiddify-core/v2"
+	"github.com/pppwaw/white-label-airport-core/bridge"
+	"github.com/pppwaw/white-label-airport-core/config"
+	v2 "github.com/pppwaw/white-label-airport-core/v2"
+	pb "github.com/pppwaw/white-label-airport-core/whitelabelairportrpc"
 
 	"github.com/sagernet/sing-box/log"
 )
@@ -45,10 +45,10 @@ func parse(path *C.char, tempPath *C.char, debug bool) (CErr *C.char) {
 	return emptyOrErrorC(err)
 }
 
-//export changeHiddifyOptions
-func changeHiddifyOptions(HiddifyOptionsJson *C.char) (CErr *C.char) {
-	_, err := v2.ChangeHiddifySettings(&pb.ChangeHiddifySettingsRequest{
-		HiddifySettingsJson: C.GoString(HiddifyOptionsJson),
+//export changeWhiteLabelAirportOptions
+func changeWhiteLabelAirportOptions(WhiteLabelAirportOptionsJson *C.char) (CErr *C.char) {
+	_, err := v2.ChangeWhiteLabelAirportSettings(&pb.ChangeWhiteLabelAirportSettingsRequest{
+		WhiteLabelAirportSettingsJson: C.GoString(WhiteLabelAirportOptionsJson),
 	})
 	return emptyOrErrorC(err)
 }

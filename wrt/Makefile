@@ -5,18 +5,18 @@ PKG_VERSION:=3.1.8
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/hiddify/hiddify-core/tar.gz/v$(PKG_VERSION)?
+PKG_SOURCE_URL:=https://codeload.github.com/pppwaw/white-label-airport-core/tar.gz/v$(PKG_VERSION)?
 PKG_HASH:=02c8db701ed3b6fc7e5ccc91d444edb6fa3ca8faa143cd2a2678f4f154eafd8d
 
 PKG_LICENSE:=https://github.com/hiddify/hiddify-next/edit/main/LICENSE.md
 PKG_LICENSE_FILES:=LICENSE
-PKG_MAINTAINER:=Hiddify <wrt@hiddify.com>
+PKG_MAINTAINER:=WhiteLabelAirport <wrt@hiddify.com>
 
 PKG_BUILD_DEPENDS:=golang/host
 PKG_BUILD_PARALLEL:=1
 PKG_BUILD_FLAGS:=no-mips16
 
-GO_PKG:=github.com/hiddify/hiddify-core
+GO_PKG:=github.com/pppwaw/white-label-airport-core
 GO_PKG_BUILD_PKG:=$(GO_PKG)/cli
 
 GO_PKG_LDFLAGS_X:=$(GO_PKG)/constant.Version=$(PKG_VERSION)
@@ -25,7 +25,7 @@ include $(INCLUDE_DIR)/package.mk
 include ../../lang/golang/golang-package.mk
 
 define Package/hiddify-core
-  TITLE:=Hiddify universal proxy platform
+  TITLE:=WhiteLabelAirport universal proxy platform
   SECTION:=net
   CATEGORY:=Network
   URL:=https://hiddify.com/
@@ -34,7 +34,7 @@ define Package/hiddify-core
 endef
 
 define Package/hiddify-core/description
-  Hiddify is a universal proxy platform which supports hysteria, SOCKS, Shadowsocks,
+  WhiteLabelAirport is a universal proxy platform which supports hysteria, SOCKS, Shadowsocks,
   ShadowTLS, Tor, trojan, VLess, VMess, WireGuard and so on.
 endef
 

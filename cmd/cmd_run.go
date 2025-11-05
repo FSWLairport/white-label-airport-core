@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	v2 "github.com/hiddify/hiddify-core/v2"
+	v2 "github.com/pppwaw/white-label-airport-core/v2"
 
 	"github.com/spf13/cobra"
 )
@@ -15,7 +15,7 @@ var commandRun = &cobra.Command{
 
 func init() {
 	// commandRun.PersistentFlags().BoolP("help", "", false, "help for this command")
-	// commandRun.Flags().StringVarP(&hiddifySettingPath, "hiddify", "d", "", "Hiddify Setting JSON Path")
+	// commandRun.Flags().StringVarP(&whitelabelairportSettingPath, "whitelabelairport", "d", "", "WhiteLabelAirport Setting JSON Path")
 
 	addHConfigFlags(commandRun)
 
@@ -24,5 +24,5 @@ func init() {
 
 func runCommand(cmd *cobra.Command, args []string) {
 	v2.Setup("./tmp", "./", "./tmp", 0, false)
-	v2.RunStandalone(hiddifySettingPath, configPath, defaultConfigs)
+	v2.RunStandalone(whitelabelairportSettingPath, configPath, defaultConfigs)
 }

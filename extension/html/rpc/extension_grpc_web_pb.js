@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for hiddifyrpc
+ * @fileoverview gRPC-Web generated client stub for whitelabelairportrpc
  * @enhanceable
  * @public
  */
@@ -10,19 +10,15 @@
 // 	protoc              v5.28.0
 // source: extension.proto
 
-
 /* eslint-disable */
 // @ts-nocheck
 
-
-
 const grpc = {};
-grpc.web = require('grpc-web');
+grpc.web = require("grpc-web");
 
-
-var base_pb = require('./base_pb.js')
+var base_pb = require("./base_pb.js");
 const proto = {};
-proto.hiddifyrpc = require('./extension_pb.js');
+proto.whitelabelairportrpc = require("./extension_pb.js");
 
 /**
  * @param {string} hostname
@@ -32,10 +28,13 @@ proto.hiddifyrpc = require('./extension_pb.js');
  * @struct
  * @final
  */
-proto.hiddifyrpc.ExtensionHostServiceClient =
-    function(hostname, credentials, options) {
+proto.whitelabelairportrpc.ExtensionHostServiceClient = function (
+  hostname,
+  credentials,
+  options
+) {
   if (!options) options = {};
-  options.format = 'text';
+  options.format = "text";
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -45,10 +44,8 @@ proto.hiddifyrpc.ExtensionHostServiceClient =
   /**
    * @private @const {string} The hostname
    */
-  this.hostname_ = hostname.replace(/\/+$/, '');
-
+  this.hostname_ = hostname.replace(/\/+$/, "");
 };
-
 
 /**
  * @param {string} hostname
@@ -58,10 +55,13 @@ proto.hiddifyrpc.ExtensionHostServiceClient =
  * @struct
  * @final
  */
-proto.hiddifyrpc.ExtensionHostServicePromiseClient =
-    function(hostname, credentials, options) {
+proto.whitelabelairportrpc.ExtensionHostServicePromiseClient = function (
+  hostname,
+  credentials,
+  options
+) {
   if (!options) options = {};
-  options.format = 'text';
+  options.format = "text";
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -71,371 +71,372 @@ proto.hiddifyrpc.ExtensionHostServicePromiseClient =
   /**
    * @private @const {string} The hostname
    */
-  this.hostname_ = hostname.replace(/\/+$/, '');
-
+  this.hostname_ = hostname.replace(/\/+$/, "");
 };
-
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.Empty,
- *   !proto.hiddifyrpc.ExtensionList>}
+ *   !proto.whitelabelairportrpc.Empty,
+ *   !proto.whitelabelairportrpc.ExtensionList>}
  */
-const methodDescriptor_ExtensionHostService_ListExtensions = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.ExtensionHostService/ListExtensions',
-  grpc.web.MethodType.UNARY,
-  base_pb.Empty,
-  proto.hiddifyrpc.ExtensionList,
-  /**
-   * @param {!proto.hiddifyrpc.Empty} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.hiddifyrpc.ExtensionList.deserializeBinary
-);
-
+const methodDescriptor_ExtensionHostService_ListExtensions =
+  new grpc.web.MethodDescriptor(
+    "/whitelabelairportrpc.ExtensionHostService/ListExtensions",
+    grpc.web.MethodType.UNARY,
+    base_pb.Empty,
+    proto.whitelabelairportrpc.ExtensionList,
+    /**
+     * @param {!proto.whitelabelairportrpc.Empty} request
+     * @return {!Uint8Array}
+     */
+    function (request) {
+      return request.serializeBinary();
+    },
+    proto.whitelabelairportrpc.ExtensionList.deserializeBinary
+  );
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The
+ * @param {!proto.whitelabelairportrpc.Empty} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.ExtensionList)}
+ * @param {function(?grpc.web.RpcError, ?proto.whitelabelairportrpc.ExtensionList)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.ExtensionList>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.whitelabelairportrpc.ExtensionList>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.ExtensionHostServiceClient.prototype.listExtensions =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.ExtensionHostService/ListExtensions',
+proto.whitelabelairportrpc.ExtensionHostServiceClient.prototype.listExtensions =
+  function (request, metadata, callback) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        "/whitelabelairportrpc.ExtensionHostService/ListExtensions",
       request,
       metadata || {},
       methodDescriptor_ExtensionHostService_ListExtensions,
-      callback);
-};
-
+      callback
+    );
+  };
 
 /**
- * @param {!proto.hiddifyrpc.Empty} request The
+ * @param {!proto.whitelabelairportrpc.Empty} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.ExtensionList>}
+ * @return {!Promise<!proto.whitelabelairportrpc.ExtensionList>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.ExtensionHostServicePromiseClient.prototype.listExtensions =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.ExtensionHostService/ListExtensions',
+proto.whitelabelairportrpc.ExtensionHostServicePromiseClient.prototype.listExtensions =
+  function (request, metadata) {
+    return this.client_.unaryCall(
+      this.hostname_ +
+        "/whitelabelairportrpc.ExtensionHostService/ListExtensions",
       request,
       metadata || {},
-      methodDescriptor_ExtensionHostService_ListExtensions);
-};
-
+      methodDescriptor_ExtensionHostService_ListExtensions
+    );
+  };
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.ExtensionRequest,
- *   !proto.hiddifyrpc.ExtensionResponse>}
+ *   !proto.whitelabelairportrpc.ExtensionRequest,
+ *   !proto.whitelabelairportrpc.ExtensionResponse>}
  */
-const methodDescriptor_ExtensionHostService_Connect = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.ExtensionHostService/Connect',
-  grpc.web.MethodType.SERVER_STREAMING,
-  proto.hiddifyrpc.ExtensionRequest,
-  proto.hiddifyrpc.ExtensionResponse,
-  /**
-   * @param {!proto.hiddifyrpc.ExtensionRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.hiddifyrpc.ExtensionResponse.deserializeBinary
-);
-
+const methodDescriptor_ExtensionHostService_Connect =
+  new grpc.web.MethodDescriptor(
+    "/whitelabelairportrpc.ExtensionHostService/Connect",
+    grpc.web.MethodType.SERVER_STREAMING,
+    proto.whitelabelairportrpc.ExtensionRequest,
+    proto.whitelabelairportrpc.ExtensionResponse,
+    /**
+     * @param {!proto.whitelabelairportrpc.ExtensionRequest} request
+     * @return {!Uint8Array}
+     */
+    function (request) {
+      return request.serializeBinary();
+    },
+    proto.whitelabelairportrpc.ExtensionResponse.deserializeBinary
+  );
 
 /**
- * @param {!proto.hiddifyrpc.ExtensionRequest} request The request proto
+ * @param {!proto.whitelabelairportrpc.ExtensionRequest} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.ExtensionResponse>}
+ * @return {!grpc.web.ClientReadableStream<!proto.whitelabelairportrpc.ExtensionResponse>}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.ExtensionHostServiceClient.prototype.connect =
-    function(request, metadata) {
-  return this.client_.serverStreaming(this.hostname_ +
-      '/hiddifyrpc.ExtensionHostService/Connect',
+proto.whitelabelairportrpc.ExtensionHostServiceClient.prototype.connect =
+  function (request, metadata) {
+    return this.client_.serverStreaming(
+      this.hostname_ + "/whitelabelairportrpc.ExtensionHostService/Connect",
       request,
       metadata || {},
-      methodDescriptor_ExtensionHostService_Connect);
-};
-
+      methodDescriptor_ExtensionHostService_Connect
+    );
+  };
 
 /**
- * @param {!proto.hiddifyrpc.ExtensionRequest} request The request proto
+ * @param {!proto.whitelabelairportrpc.ExtensionRequest} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.ExtensionResponse>}
+ * @return {!grpc.web.ClientReadableStream<!proto.whitelabelairportrpc.ExtensionResponse>}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.ExtensionHostServicePromiseClient.prototype.connect =
-    function(request, metadata) {
-  return this.client_.serverStreaming(this.hostname_ +
-      '/hiddifyrpc.ExtensionHostService/Connect',
+proto.whitelabelairportrpc.ExtensionHostServicePromiseClient.prototype.connect =
+  function (request, metadata) {
+    return this.client_.serverStreaming(
+      this.hostname_ + "/whitelabelairportrpc.ExtensionHostService/Connect",
       request,
       metadata || {},
-      methodDescriptor_ExtensionHostService_Connect);
-};
-
+      methodDescriptor_ExtensionHostService_Connect
+    );
+  };
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.EditExtensionRequest,
- *   !proto.hiddifyrpc.ExtensionActionResult>}
+ *   !proto.whitelabelairportrpc.EditExtensionRequest,
+ *   !proto.whitelabelairportrpc.ExtensionActionResult>}
  */
-const methodDescriptor_ExtensionHostService_EditExtension = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.ExtensionHostService/EditExtension',
-  grpc.web.MethodType.UNARY,
-  proto.hiddifyrpc.EditExtensionRequest,
-  proto.hiddifyrpc.ExtensionActionResult,
-  /**
-   * @param {!proto.hiddifyrpc.EditExtensionRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.hiddifyrpc.ExtensionActionResult.deserializeBinary
-);
-
+const methodDescriptor_ExtensionHostService_EditExtension =
+  new grpc.web.MethodDescriptor(
+    "/whitelabelairportrpc.ExtensionHostService/EditExtension",
+    grpc.web.MethodType.UNARY,
+    proto.whitelabelairportrpc.EditExtensionRequest,
+    proto.whitelabelairportrpc.ExtensionActionResult,
+    /**
+     * @param {!proto.whitelabelairportrpc.EditExtensionRequest} request
+     * @return {!Uint8Array}
+     */
+    function (request) {
+      return request.serializeBinary();
+    },
+    proto.whitelabelairportrpc.ExtensionActionResult.deserializeBinary
+  );
 
 /**
- * @param {!proto.hiddifyrpc.EditExtensionRequest} request The
+ * @param {!proto.whitelabelairportrpc.EditExtensionRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.ExtensionActionResult)}
+ * @param {function(?grpc.web.RpcError, ?proto.whitelabelairportrpc.ExtensionActionResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.ExtensionActionResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.whitelabelairportrpc.ExtensionActionResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.ExtensionHostServiceClient.prototype.editExtension =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.ExtensionHostService/EditExtension',
+proto.whitelabelairportrpc.ExtensionHostServiceClient.prototype.editExtension =
+  function (request, metadata, callback) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        "/whitelabelairportrpc.ExtensionHostService/EditExtension",
       request,
       metadata || {},
       methodDescriptor_ExtensionHostService_EditExtension,
-      callback);
-};
-
+      callback
+    );
+  };
 
 /**
- * @param {!proto.hiddifyrpc.EditExtensionRequest} request The
+ * @param {!proto.whitelabelairportrpc.EditExtensionRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.ExtensionActionResult>}
+ * @return {!Promise<!proto.whitelabelairportrpc.ExtensionActionResult>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.ExtensionHostServicePromiseClient.prototype.editExtension =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.ExtensionHostService/EditExtension',
+proto.whitelabelairportrpc.ExtensionHostServicePromiseClient.prototype.editExtension =
+  function (request, metadata) {
+    return this.client_.unaryCall(
+      this.hostname_ +
+        "/whitelabelairportrpc.ExtensionHostService/EditExtension",
       request,
       metadata || {},
-      methodDescriptor_ExtensionHostService_EditExtension);
-};
-
+      methodDescriptor_ExtensionHostService_EditExtension
+    );
+  };
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.SendExtensionDataRequest,
- *   !proto.hiddifyrpc.ExtensionActionResult>}
+ *   !proto.whitelabelairportrpc.SendExtensionDataRequest,
+ *   !proto.whitelabelairportrpc.ExtensionActionResult>}
  */
-const methodDescriptor_ExtensionHostService_SubmitForm = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.ExtensionHostService/SubmitForm',
-  grpc.web.MethodType.UNARY,
-  proto.hiddifyrpc.SendExtensionDataRequest,
-  proto.hiddifyrpc.ExtensionActionResult,
-  /**
-   * @param {!proto.hiddifyrpc.SendExtensionDataRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.hiddifyrpc.ExtensionActionResult.deserializeBinary
-);
-
+const methodDescriptor_ExtensionHostService_SubmitForm =
+  new grpc.web.MethodDescriptor(
+    "/whitelabelairportrpc.ExtensionHostService/SubmitForm",
+    grpc.web.MethodType.UNARY,
+    proto.whitelabelairportrpc.SendExtensionDataRequest,
+    proto.whitelabelairportrpc.ExtensionActionResult,
+    /**
+     * @param {!proto.whitelabelairportrpc.SendExtensionDataRequest} request
+     * @return {!Uint8Array}
+     */
+    function (request) {
+      return request.serializeBinary();
+    },
+    proto.whitelabelairportrpc.ExtensionActionResult.deserializeBinary
+  );
 
 /**
- * @param {!proto.hiddifyrpc.SendExtensionDataRequest} request The
+ * @param {!proto.whitelabelairportrpc.SendExtensionDataRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.ExtensionActionResult)}
+ * @param {function(?grpc.web.RpcError, ?proto.whitelabelairportrpc.ExtensionActionResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.ExtensionActionResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.whitelabelairportrpc.ExtensionActionResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.ExtensionHostServiceClient.prototype.submitForm =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.ExtensionHostService/SubmitForm',
+proto.whitelabelairportrpc.ExtensionHostServiceClient.prototype.submitForm =
+  function (request, metadata, callback) {
+    return this.client_.rpcCall(
+      this.hostname_ + "/whitelabelairportrpc.ExtensionHostService/SubmitForm",
       request,
       metadata || {},
       methodDescriptor_ExtensionHostService_SubmitForm,
-      callback);
-};
-
+      callback
+    );
+  };
 
 /**
- * @param {!proto.hiddifyrpc.SendExtensionDataRequest} request The
+ * @param {!proto.whitelabelairportrpc.SendExtensionDataRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.ExtensionActionResult>}
+ * @return {!Promise<!proto.whitelabelairportrpc.ExtensionActionResult>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.ExtensionHostServicePromiseClient.prototype.submitForm =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.ExtensionHostService/SubmitForm',
+proto.whitelabelairportrpc.ExtensionHostServicePromiseClient.prototype.submitForm =
+  function (request, metadata) {
+    return this.client_.unaryCall(
+      this.hostname_ + "/whitelabelairportrpc.ExtensionHostService/SubmitForm",
       request,
       metadata || {},
-      methodDescriptor_ExtensionHostService_SubmitForm);
-};
-
+      methodDescriptor_ExtensionHostService_SubmitForm
+    );
+  };
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.ExtensionRequest,
- *   !proto.hiddifyrpc.ExtensionActionResult>}
+ *   !proto.whitelabelairportrpc.ExtensionRequest,
+ *   !proto.whitelabelairportrpc.ExtensionActionResult>}
  */
-const methodDescriptor_ExtensionHostService_Close = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.ExtensionHostService/Close',
-  grpc.web.MethodType.UNARY,
-  proto.hiddifyrpc.ExtensionRequest,
-  proto.hiddifyrpc.ExtensionActionResult,
-  /**
-   * @param {!proto.hiddifyrpc.ExtensionRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.hiddifyrpc.ExtensionActionResult.deserializeBinary
-);
-
+const methodDescriptor_ExtensionHostService_Close =
+  new grpc.web.MethodDescriptor(
+    "/whitelabelairportrpc.ExtensionHostService/Close",
+    grpc.web.MethodType.UNARY,
+    proto.whitelabelairportrpc.ExtensionRequest,
+    proto.whitelabelairportrpc.ExtensionActionResult,
+    /**
+     * @param {!proto.whitelabelairportrpc.ExtensionRequest} request
+     * @return {!Uint8Array}
+     */
+    function (request) {
+      return request.serializeBinary();
+    },
+    proto.whitelabelairportrpc.ExtensionActionResult.deserializeBinary
+  );
 
 /**
- * @param {!proto.hiddifyrpc.ExtensionRequest} request The
+ * @param {!proto.whitelabelairportrpc.ExtensionRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.ExtensionActionResult)}
+ * @param {function(?grpc.web.RpcError, ?proto.whitelabelairportrpc.ExtensionActionResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.ExtensionActionResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.whitelabelairportrpc.ExtensionActionResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.ExtensionHostServiceClient.prototype.close =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.ExtensionHostService/Close',
+proto.whitelabelairportrpc.ExtensionHostServiceClient.prototype.close =
+  function (request, metadata, callback) {
+    return this.client_.rpcCall(
+      this.hostname_ + "/whitelabelairportrpc.ExtensionHostService/Close",
       request,
       metadata || {},
       methodDescriptor_ExtensionHostService_Close,
-      callback);
-};
-
+      callback
+    );
+  };
 
 /**
- * @param {!proto.hiddifyrpc.ExtensionRequest} request The
+ * @param {!proto.whitelabelairportrpc.ExtensionRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.ExtensionActionResult>}
+ * @return {!Promise<!proto.whitelabelairportrpc.ExtensionActionResult>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.ExtensionHostServicePromiseClient.prototype.close =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.ExtensionHostService/Close',
+proto.whitelabelairportrpc.ExtensionHostServicePromiseClient.prototype.close =
+  function (request, metadata) {
+    return this.client_.unaryCall(
+      this.hostname_ + "/whitelabelairportrpc.ExtensionHostService/Close",
       request,
       metadata || {},
-      methodDescriptor_ExtensionHostService_Close);
-};
-
+      methodDescriptor_ExtensionHostService_Close
+    );
+  };
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.hiddifyrpc.ExtensionRequest,
- *   !proto.hiddifyrpc.ExtensionActionResult>}
+ *   !proto.whitelabelairportrpc.ExtensionRequest,
+ *   !proto.whitelabelairportrpc.ExtensionActionResult>}
  */
-const methodDescriptor_ExtensionHostService_GetUI = new grpc.web.MethodDescriptor(
-  '/hiddifyrpc.ExtensionHostService/GetUI',
-  grpc.web.MethodType.UNARY,
-  proto.hiddifyrpc.ExtensionRequest,
-  proto.hiddifyrpc.ExtensionActionResult,
-  /**
-   * @param {!proto.hiddifyrpc.ExtensionRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.hiddifyrpc.ExtensionActionResult.deserializeBinary
-);
-
+const methodDescriptor_ExtensionHostService_GetUI =
+  new grpc.web.MethodDescriptor(
+    "/whitelabelairportrpc.ExtensionHostService/GetUI",
+    grpc.web.MethodType.UNARY,
+    proto.whitelabelairportrpc.ExtensionRequest,
+    proto.whitelabelairportrpc.ExtensionActionResult,
+    /**
+     * @param {!proto.whitelabelairportrpc.ExtensionRequest} request
+     * @return {!Uint8Array}
+     */
+    function (request) {
+      return request.serializeBinary();
+    },
+    proto.whitelabelairportrpc.ExtensionActionResult.deserializeBinary
+  );
 
 /**
- * @param {!proto.hiddifyrpc.ExtensionRequest} request The
+ * @param {!proto.whitelabelairportrpc.ExtensionRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.hiddifyrpc.ExtensionActionResult)}
+ * @param {function(?grpc.web.RpcError, ?proto.whitelabelairportrpc.ExtensionActionResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.hiddifyrpc.ExtensionActionResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.whitelabelairportrpc.ExtensionActionResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.hiddifyrpc.ExtensionHostServiceClient.prototype.getUI =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/hiddifyrpc.ExtensionHostService/GetUI',
+proto.whitelabelairportrpc.ExtensionHostServiceClient.prototype.getUI =
+  function (request, metadata, callback) {
+    return this.client_.rpcCall(
+      this.hostname_ + "/whitelabelairportrpc.ExtensionHostService/GetUI",
       request,
       metadata || {},
       methodDescriptor_ExtensionHostService_GetUI,
-      callback);
-};
-
+      callback
+    );
+  };
 
 /**
- * @param {!proto.hiddifyrpc.ExtensionRequest} request The
+ * @param {!proto.whitelabelairportrpc.ExtensionRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.hiddifyrpc.ExtensionActionResult>}
+ * @return {!Promise<!proto.whitelabelairportrpc.ExtensionActionResult>}
  *     Promise that resolves to the response
  */
-proto.hiddifyrpc.ExtensionHostServicePromiseClient.prototype.getUI =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/hiddifyrpc.ExtensionHostService/GetUI',
+proto.whitelabelairportrpc.ExtensionHostServicePromiseClient.prototype.getUI =
+  function (request, metadata) {
+    return this.client_.unaryCall(
+      this.hostname_ + "/whitelabelairportrpc.ExtensionHostService/GetUI",
       request,
       metadata || {},
-      methodDescriptor_ExtensionHostService_GetUI);
-};
+      methodDescriptor_ExtensionHostService_GetUI
+    );
+  };
 
-
-module.exports = proto.hiddifyrpc;
-
+module.exports = proto.whitelabelairportrpc;

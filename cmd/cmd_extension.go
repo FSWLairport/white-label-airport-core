@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	_ "github.com/hiddify/hiddify-core/extension/repository"
-	"github.com/hiddify/hiddify-core/extension/server"
+	_ "github.com/pppwaw/white-label-airport-core/extension/repository"
+	"github.com/pppwaw/white-label-airport-core/extension/server"
 	"github.com/spf13/cobra"
 )
 

@@ -7,7 +7,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/hiddify/hiddify-core/cmd"
+	"github.com/pppwaw/white-label-airport-core/cmd"
 )
 
 //export parseCli

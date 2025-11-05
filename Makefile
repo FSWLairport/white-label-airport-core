@@ -3,7 +3,7 @@ PRODUCT_NAME=libcore
 BASENAME=$(PRODUCT_NAME)
 BINDIR=bin
 LIBNAME=$(PRODUCT_NAME)
-CLINAME=HiddifyCli
+CLINAME=WhiteLabelAirportCli
 
 BRANCH=$(shell git branch --show-current)
 VERSION=$(shell git describe --tags || echo "unknown version")
@@ -18,8 +18,8 @@ GOBUILDSRV=CGO_ENABLED=1 go build -ldflags "-s -w" -trimpath -tags $(TAGS)
 
 .PHONY: protos
 protos:
-	protoc --go_out=./ --go-grpc_out=./ --proto_path=hiddifyrpc hiddifyrpc/*.proto
-	protoc --js_out=import_style=commonjs,binary:./extension/html/rpc/ --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./extension/html/rpc/ --proto_path=hiddifyrpc hiddifyrpc/*.proto
+	protoc --go_out=./ --go-grpc_out=./ --proto_path=whitelabelairportrpc whitelabelairportrpc/*.proto
+	protoc --js_out=import_style=commonjs,binary:./extension/html/rpc/ --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./extension/html/rpc/ --proto_path=whitelabelairportrpc whitelabelairportrpc/*.proto
 	npx browserify extension/html/rpc/extension.js >extension/html/rpc.js
 
 
@@ -58,7 +58,7 @@ windows-amd64:
 	go install -mod=readonly github.com/akavel/rsrc@latest ||echo "rsrc error in installation"
 	go run ./cli tunnel exit
 	cp $(BINDIR)/$(LIBNAME).dll ./$(LIBNAME).dll 
-	$$(go env GOPATH)/bin/rsrc -ico ./assets/hiddify-cli.ico -o ./cli/bydll/cli.syso ||echo "rsrc error in syso"
+	$$(go env GOPATH)/bin/rsrc -ico ./assets/whitelabelairport-cli.ico -o ./cli/bydll/cli.syso ||echo "rsrc error in syso"
 	env GOOS=windows GOARCH=amd64 CC=x86_64-w64-mingw32-gcc CGO_LDFLAGS="$(LIBNAME).dll" $(GOBUILDSRV) -o $(BINDIR)/$(CLINAME).exe ./cli/bydll
 	rm ./$(LIBNAME).dll
 	make webui

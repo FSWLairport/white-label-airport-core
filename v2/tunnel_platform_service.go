@@ -11,16 +11,16 @@ import (
 
 var logger service.Logger
 
-type hiddifyNext struct{}
+type WhiteLabelAirport struct{}
 
 var port int = 18020
 
-func (m *hiddifyNext) Start(s service.Service) error {
+func (m *WhiteLabelAirport) Start(s service.Service) error {
 	_, err := StartTunnelGrpcServer(fmt.Sprintf("127.0.0.1:%d", port))
 	return err
 }
 
-func (m *hiddifyNext) Stop(s service.Service) error {
+func (m *WhiteLabelAirport) Stop(s service.Service) error {
 	_, err := Stop()
 	if err != nil {
 		return nil
@@ -44,8 +44,8 @@ func getCurrentExecutableDirectory() string {
 
 func StartTunnelService(goArg string) (int, string) {
 	svcConfig := &service.Config{
-		Name:        "HiddifyTunnelService",
-		DisplayName: "Hiddify Tunnel Service",
+		Name:        "WhiteLabelAirportTunnelService",
+		DisplayName: "WhiteLabelAirport Tunnel Service",
 		Arguments:   []string{"tunnel", "run"},
 		Description: "This is a bridge for tunnel",
 		Option: map[string]interface{}{
@@ -54,7 +54,7 @@ func StartTunnelService(goArg string) (int, string) {
 		},
 	}
 
-	prg := &hiddifyNext{}
+	prg := &WhiteLabelAirport{}
 	s, err := service.New(prg, svcConfig)
 	if err != nil {
 		// log.Printf("Error: %v", err)

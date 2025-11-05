@@ -46,7 +46,7 @@ func (s *server) GenerateFullConfig(ctx context.Context, in *GenerateConfigReque
 	if err != nil {
 		return nil, err
 	}
-	config, err := BuildConfigJson(*DefaultHiddifyOptions(), options)
+	config, err := BuildConfigJson(*DefaultWhiteLabelAirportOptions(), options)
 	if err != nil {
 		return nil, err
 	}

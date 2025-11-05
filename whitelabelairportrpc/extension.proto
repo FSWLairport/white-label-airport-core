@@ -2,9 +2,9 @@ syntax = "proto3";
 
 import "base.proto";
 
-package hiddifyrpc;
+package whitelabelairportrpc;
 
-option go_package = "./hiddifyrpc";
+option go_package = "./whitelabelairportrpc";
 
 service ExtensionHostService {
   rpc ListExtensions (Empty) returns (ExtensionList) {}

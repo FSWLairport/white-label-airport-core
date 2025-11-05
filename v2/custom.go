@@ -8,19 +8,19 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/hiddify/hiddify-core/bridge"
-	"github.com/hiddify/hiddify-core/config"
-	pb "github.com/hiddify/hiddify-core/hiddifyrpc"
+	"github.com/pppwaw/white-label-airport-core/bridge"
+	"github.com/pppwaw/white-label-airport-core/config"
+	pb "github.com/pppwaw/white-label-airport-core/whitelabelairportrpc"
 	"github.com/sagernet/sing-box/experimental/libbox"
 	"github.com/sagernet/sing-box/log"
 )
 
 var (
-	Box              *libbox.BoxService
-	HiddifyOptions   *config.HiddifyOptions
-	activeConfigPath string
-	coreLogFactory   log.Factory
-	useFlutterBridge bool = true
+	Box                      *libbox.BoxService
+	WhiteLabelAirportOptions *config.WhiteLabelAirportOptions
+	activeConfigPath         string
+	coreLogFactory           log.Factory
+	useFlutterBridge         bool = true
 )
 
 func StopAndAlert(msgType pb.MessageType, message string) {
@@ -100,7 +100,7 @@ func StartService(in *pb.StartRequest) (*pb.CoreInfoResponse, error) {
 	}
 	if !in.EnableRawConfig {
 		Log(pb.LogLevel_DEBUG, pb.LogType_CORE, "Building config")
-		parsedContent_tmp, err := config.BuildConfig(*HiddifyOptions, parsedContent)
+		parsedContent_tmp, err := config.BuildConfig(*WhiteLabelAirportOptions, parsedContent)
 		if err != nil {
 			Log(pb.LogLevel_FATAL, pb.LogType_CORE, err.Error())
 			resp := SetCoreStatus(pb.CoreState_STOPPED, pb.MessageType_ERROR_BUILDING_CONFIG, err.Error())
@@ -176,7 +176,7 @@ func Parse(in *pb.ParseRequest) (*pb.ParseResponse, error) {
 
 	}
 
-	config, err := config.ParseConfigContent(content, true, HiddifyOptions, false)
+	config, err := config.ParseConfigContent(content, true, WhiteLabelAirportOptions, false)
 	if err != nil {
 		return &pb.ParseResponse{
 			ResponseCode: pb.ResponseCode_FAILED,
@@ -199,24 +199,24 @@ func Parse(in *pb.ParseRequest) (*pb.ParseResponse, error) {
 	}, err
 }
 
-func (s *CoreService) ChangeHiddifySettings(ctx context.Context, in *pb.ChangeHiddifySettingsRequest) (*pb.CoreInfoResponse, error) {
-	return ChangeHiddifySettings(in)
+func (s *CoreService) ChangeWhiteLabelAirportSettings(ctx context.Context, in *pb.ChangeWhiteLabelAirportSettingsRequest) (*pb.CoreInfoResponse, error) {
+	return ChangeWhiteLabelAirportSettings(in)
 }
 
-func ChangeHiddifySettings(in *pb.ChangeHiddifySettingsRequest) (*pb.CoreInfoResponse, error) {
-	HiddifyOptions = config.DefaultHiddifyOptions()
-	err := json.Unmarshal([]byte(in.HiddifySettingsJson), HiddifyOptions)
+func ChangeWhiteLabelAirportSettings(in *pb.ChangeWhiteLabelAirportSettingsRequest) (*pb.CoreInfoResponse, error) {
+	WhiteLabelAirportOptions = config.DefaultWhiteLabelAirportOptions()
+	err := json.Unmarshal([]byte(in.WhiteLabelAirportSettingsJson), WhiteLabelAirportOptions)
 	if err != nil {
 		return nil, err
 	}
-	if HiddifyOptions.Warp.WireguardConfigStr != "" {
-		err := json.Unmarshal([]byte(HiddifyOptions.Warp.WireguardConfigStr), &HiddifyOptions.Warp.WireguardConfig)
+	if WhiteLabelAirportOptions.Warp.WireguardConfigStr != "" {
+		err := json.Unmarshal([]byte(WhiteLabelAirportOptions.Warp.WireguardConfigStr), &WhiteLabelAirportOptions.Warp.WireguardConfig)
 		if err != nil {
 			return nil, err
 		}
 	}
-	if HiddifyOptions.Warp2.WireguardConfigStr != "" {
-		err := json.Unmarshal([]byte(HiddifyOptions.Warp2.WireguardConfigStr), &HiddifyOptions.Warp2.WireguardConfig)
+	if WhiteLabelAirportOptions.Warp2.WireguardConfigStr != "" {
+		err := json.Unmarshal([]byte(WhiteLabelAirportOptions.Warp2.WireguardConfigStr), &WhiteLabelAirportOptions.Warp2.WireguardConfig)
 		if err != nil {
 			return nil, err
 		}
@@ -233,10 +233,10 @@ func GenerateConfig(in *pb.GenerateConfigRequest) (*pb.GenerateConfigResponse, e
 		Log(pb.LogLevel_FATAL, pb.LogType_CONFIG, err.Error())
 		StopAndAlert(pb.MessageType_UNEXPECTED_ERROR, err.Error())
 	})
-	if HiddifyOptions == nil {
-		HiddifyOptions = config.DefaultHiddifyOptions()
+	if WhiteLabelAirportOptions == nil {
+		WhiteLabelAirportOptions = config.DefaultWhiteLabelAirportOptions()
 	}
-	config, err := generateConfigFromFile(in.Path, *HiddifyOptions)
+	config, err := generateConfigFromFile(in.Path, *WhiteLabelAirportOptions)
 	if err != nil {
 		return nil, err
 	}
@@ -245,7 +245,7 @@ func GenerateConfig(in *pb.GenerateConfigRequest) (*pb.GenerateConfigResponse, e
 	}, nil
 }
 
-func generateConfigFromFile(path string, configOpt config.HiddifyOptions) (string, error) {
+func generateConfigFromFile(path string, configOpt config.WhiteLabelAirportOptions) (string, error) {
 	os.Chdir(filepath.Dir(path))
 	content, err := os.ReadFile(path)
 	if err != nil {

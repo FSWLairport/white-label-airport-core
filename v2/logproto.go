@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	pb "github.com/hiddify/hiddify-core/hiddifyrpc"
+	pb "github.com/pppwaw/white-label-airport-core/whitelabelairportrpc"
 	"github.com/sagernet/sing/common/observable"
 	"google.golang.org/grpc"
 )

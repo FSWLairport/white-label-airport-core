@@ -5,7 +5,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	v2 "github.com/hiddify/hiddify-core/v2"
+	v2 "github.com/pppwaw/white-label-airport-core/v2"
 	"github.com/sagernet/sing-box/log"
 	"github.com/spf13/cobra"
 )
@@ -15,16 +15,16 @@ var commandInstance = &cobra.Command{
 	Short: "instance",
 	Args:  cobra.OnlyValidArgs,
 	Run: func(cmd *cobra.Command, args []string) {
-		hiddifySetting := defaultConfigs
-		if hiddifySettingPath != "" {
-			hiddifySetting2, err := v2.ReadHiddifyOptionsAt(hiddifySettingPath)
+		whitelabelairportSetting := defaultConfigs
+		if whitelabelairportSettingPath != "" {
+			whitelabelairportSetting2, err := v2.ReadWhiteLabelAirportOptionsAt(whitelabelairportSettingPath)
 			if err != nil {
 				log.Fatal(err)
 			}
-			hiddifySetting = *hiddifySetting2
+			whitelabelairportSetting = *whitelabelairportSetting2
 		}
 
-		instance, err := v2.RunInstanceString(&hiddifySetting, configPath)
+		instance, err := v2.RunInstanceString(&whitelabelairportSetting, configPath)
 		if err != nil {
 			log.Fatal(err)
 		}

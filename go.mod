@@ -1,4 +1,4 @@
-module github.com/hiddify/hiddify-core
+module github.com/pppwaw/white-label-airport-core
 
 go 1.22.0
 

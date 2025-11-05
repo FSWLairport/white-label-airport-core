@@ -2,15 +2,16 @@
 // versions:
 // 	protoc-gen-go v1.34.2
 // 	protoc        v5.28.0
-// source: hiddify.proto
+// source: whitelabelairport.proto
 
-package hiddifyrpc
+package whitelabelairportrpc
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -56,11 +57,11 @@ func (x CoreState) String() string {
 }
 
 func (CoreState) Descriptor() protoreflect.EnumDescriptor {
-	return file_hiddify_proto_enumTypes[0].Descriptor()
+	return file_whitelabelairport_proto_enumTypes[0].Descriptor()
 }
 
 func (CoreState) Type() protoreflect.EnumType {
-	return &file_hiddify_proto_enumTypes[0]
+	return &file_whitelabelairport_proto_enumTypes[0]
 }
 
 func (x CoreState) Number() protoreflect.EnumNumber {
@@ -69,7 +70,7 @@ func (x CoreState) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use CoreState.Descriptor instead.
 func (CoreState) EnumDescriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{0}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{0}
 }
 
 type MessageType int32
@@ -138,11 +139,11 @@ func (x MessageType) String() string {
 }
 
 func (MessageType) Descriptor() protoreflect.EnumDescriptor {
-	return file_hiddify_proto_enumTypes[1].Descriptor()
+	return file_whitelabelairport_proto_enumTypes[1].Descriptor()
 }
 
 func (MessageType) Type() protoreflect.EnumType {
-	return &file_hiddify_proto_enumTypes[1]
+	return &file_whitelabelairport_proto_enumTypes[1]
 }
 
 func (x MessageType) Number() protoreflect.EnumNumber {
@@ -151,7 +152,7 @@ func (x MessageType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use MessageType.Descriptor instead.
 func (MessageType) EnumDescriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{1}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{1}
 }
 
 type LogLevel int32
@@ -193,11 +194,11 @@ func (x LogLevel) String() string {
 }
 
 func (LogLevel) Descriptor() protoreflect.EnumDescriptor {
-	return file_hiddify_proto_enumTypes[2].Descriptor()
+	return file_whitelabelairport_proto_enumTypes[2].Descriptor()
 }
 
 func (LogLevel) Type() protoreflect.EnumType {
-	return &file_hiddify_proto_enumTypes[2]
+	return &file_whitelabelairport_proto_enumTypes[2]
 }
 
 func (x LogLevel) Number() protoreflect.EnumNumber {
@@ -206,7 +207,7 @@ func (x LogLevel) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use LogLevel.Descriptor instead.
 func (LogLevel) EnumDescriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{2}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{2}
 }
 
 type LogType int32
@@ -242,11 +243,11 @@ func (x LogType) String() string {
 }
 
 func (LogType) Descriptor() protoreflect.EnumDescriptor {
-	return file_hiddify_proto_enumTypes[3].Descriptor()
+	return file_whitelabelairport_proto_enumTypes[3].Descriptor()
 }
 
 func (LogType) Type() protoreflect.EnumType {
-	return &file_hiddify_proto_enumTypes[3]
+	return &file_whitelabelairport_proto_enumTypes[3]
 }
 
 func (x LogType) Number() protoreflect.EnumNumber {
@@ -255,7 +256,7 @@ func (x LogType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use LogType.Descriptor instead.
 func (LogType) EnumDescriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{3}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{3}
 }
 
 type CoreInfoResponse struct {
@@ -263,15 +264,15 @@ type CoreInfoResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CoreState   CoreState   `protobuf:"varint,1,opt,name=core_state,json=coreState,proto3,enum=hiddifyrpc.CoreState" json:"core_state,omitempty"`
-	MessageType MessageType `protobuf:"varint,2,opt,name=message_type,json=messageType,proto3,enum=hiddifyrpc.MessageType" json:"message_type,omitempty"`
+	CoreState   CoreState   `protobuf:"varint,1,opt,name=core_state,json=coreState,proto3,enum=whitelabelairportrpc.CoreState" json:"core_state,omitempty"`
+	MessageType MessageType `protobuf:"varint,2,opt,name=message_type,json=messageType,proto3,enum=whitelabelairportrpc.MessageType" json:"message_type,omitempty"`
 	Message     string      `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
 }
 
 func (x *CoreInfoResponse) Reset() {
 	*x = CoreInfoResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[0]
+		mi := &file_whitelabelairport_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -284,7 +285,7 @@ func (x *CoreInfoResponse) String() string {
 func (*CoreInfoResponse) ProtoMessage() {}
 
 func (x *CoreInfoResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[0]
+	mi := &file_whitelabelairport_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -297,7 +298,7 @@ func (x *CoreInfoResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CoreInfoResponse.ProtoReflect.Descriptor instead.
 func (*CoreInfoResponse) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{0}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CoreInfoResponse) GetCoreState() CoreState {
@@ -337,7 +338,7 @@ type StartRequest struct {
 func (x *StartRequest) Reset() {
 	*x = StartRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[1]
+		mi := &file_whitelabelairport_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -350,7 +351,7 @@ func (x *StartRequest) String() string {
 func (*StartRequest) ProtoMessage() {}
 
 func (x *StartRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[1]
+	mi := &file_whitelabelairport_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -363,7 +364,7 @@ func (x *StartRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StartRequest.ProtoReflect.Descriptor instead.
 func (*StartRequest) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{1}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *StartRequest) GetConfigPath() string {
@@ -421,7 +422,7 @@ type SetupRequest struct {
 func (x *SetupRequest) Reset() {
 	*x = SetupRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[2]
+		mi := &file_whitelabelairport_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -434,7 +435,7 @@ func (x *SetupRequest) String() string {
 func (*SetupRequest) ProtoMessage() {}
 
 func (x *SetupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[2]
+	mi := &file_whitelabelairport_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -447,7 +448,7 @@ func (x *SetupRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetupRequest.ProtoReflect.Descriptor instead.
 func (*SetupRequest) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{2}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *SetupRequest) GetBasePath() string {
@@ -476,14 +477,14 @@ type Response struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ResponseCode ResponseCode `protobuf:"varint,1,opt,name=response_code,json=responseCode,proto3,enum=hiddifyrpc.ResponseCode" json:"response_code,omitempty"`
+	ResponseCode ResponseCode `protobuf:"varint,1,opt,name=response_code,json=responseCode,proto3,enum=whitelabelairportrpc.ResponseCode" json:"response_code,omitempty"`
 	Message      string       `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
 }
 
 func (x *Response) Reset() {
 	*x = Response{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[3]
+		mi := &file_whitelabelairport_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -496,7 +497,7 @@ func (x *Response) String() string {
 func (*Response) ProtoMessage() {}
 
 func (x *Response) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[3]
+	mi := &file_whitelabelairport_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -509,7 +510,7 @@ func (x *Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Response.ProtoReflect.Descriptor instead.
 func (*Response) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{3}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Response) GetResponseCode() ResponseCode {
@@ -545,7 +546,7 @@ type SystemInfo struct {
 func (x *SystemInfo) Reset() {
 	*x = SystemInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[4]
+		mi := &file_whitelabelairport_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -558,7 +559,7 @@ func (x *SystemInfo) String() string {
 func (*SystemInfo) ProtoMessage() {}
 
 func (x *SystemInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[4]
+	mi := &file_whitelabelairport_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -571,7 +572,7 @@ func (x *SystemInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SystemInfo.ProtoReflect.Descriptor instead.
 func (*SystemInfo) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{4}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *SystemInfo) GetMemory() int64 {
@@ -651,7 +652,7 @@ type OutboundGroupItem struct {
 func (x *OutboundGroupItem) Reset() {
 	*x = OutboundGroupItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[5]
+		mi := &file_whitelabelairport_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -664,7 +665,7 @@ func (x *OutboundGroupItem) String() string {
 func (*OutboundGroupItem) ProtoMessage() {}
 
 func (x *OutboundGroupItem) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[5]
+	mi := &file_whitelabelairport_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -677,7 +678,7 @@ func (x *OutboundGroupItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OutboundGroupItem.ProtoReflect.Descriptor instead.
 func (*OutboundGroupItem) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{5}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *OutboundGroupItem) GetTag() string {
@@ -722,7 +723,7 @@ type OutboundGroup struct {
 func (x *OutboundGroup) Reset() {
 	*x = OutboundGroup{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[6]
+		mi := &file_whitelabelairport_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -735,7 +736,7 @@ func (x *OutboundGroup) String() string {
 func (*OutboundGroup) ProtoMessage() {}
 
 func (x *OutboundGroup) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[6]
+	mi := &file_whitelabelairport_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -748,7 +749,7 @@ func (x *OutboundGroup) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OutboundGroup.ProtoReflect.Descriptor instead.
 func (*OutboundGroup) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{6}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *OutboundGroup) GetTag() string {
@@ -790,7 +791,7 @@ type OutboundGroupList struct {
 func (x *OutboundGroupList) Reset() {
 	*x = OutboundGroupList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[7]
+		mi := &file_whitelabelairport_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -803,7 +804,7 @@ func (x *OutboundGroupList) String() string {
 func (*OutboundGroupList) ProtoMessage() {}
 
 func (x *OutboundGroupList) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[7]
+	mi := &file_whitelabelairport_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -816,7 +817,7 @@ func (x *OutboundGroupList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OutboundGroupList.ProtoReflect.Descriptor instead.
 func (*OutboundGroupList) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{7}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *OutboundGroupList) GetItems() []*OutboundGroup {
@@ -838,7 +839,7 @@ type WarpAccount struct {
 func (x *WarpAccount) Reset() {
 	*x = WarpAccount{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[8]
+		mi := &file_whitelabelairport_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -851,7 +852,7 @@ func (x *WarpAccount) String() string {
 func (*WarpAccount) ProtoMessage() {}
 
 func (x *WarpAccount) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[8]
+	mi := &file_whitelabelairport_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -864,7 +865,7 @@ func (x *WarpAccount) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WarpAccount.ProtoReflect.Descriptor instead.
 func (*WarpAccount) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{8}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *WarpAccount) GetAccountId() string {
@@ -896,7 +897,7 @@ type WarpWireguardConfig struct {
 func (x *WarpWireguardConfig) Reset() {
 	*x = WarpWireguardConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[9]
+		mi := &file_whitelabelairport_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -909,7 +910,7 @@ func (x *WarpWireguardConfig) String() string {
 func (*WarpWireguardConfig) ProtoMessage() {}
 
 func (x *WarpWireguardConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[9]
+	mi := &file_whitelabelairport_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -922,7 +923,7 @@ func (x *WarpWireguardConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WarpWireguardConfig.ProtoReflect.Descriptor instead.
 func (*WarpWireguardConfig) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{9}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *WarpWireguardConfig) GetPrivateKey() string {
@@ -973,7 +974,7 @@ type WarpGenerationResponse struct {
 func (x *WarpGenerationResponse) Reset() {
 	*x = WarpGenerationResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[10]
+		mi := &file_whitelabelairport_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -986,7 +987,7 @@ func (x *WarpGenerationResponse) String() string {
 func (*WarpGenerationResponse) ProtoMessage() {}
 
 func (x *WarpGenerationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[10]
+	mi := &file_whitelabelairport_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -999,7 +1000,7 @@ func (x *WarpGenerationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WarpGenerationResponse.ProtoReflect.Descriptor instead.
 func (*WarpGenerationResponse) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{10}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *WarpGenerationResponse) GetAccount() *WarpAccount {
@@ -1035,7 +1036,7 @@ type SystemProxyStatus struct {
 func (x *SystemProxyStatus) Reset() {
 	*x = SystemProxyStatus{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[11]
+		mi := &file_whitelabelairport_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1048,7 +1049,7 @@ func (x *SystemProxyStatus) String() string {
 func (*SystemProxyStatus) ProtoMessage() {}
 
 func (x *SystemProxyStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[11]
+	mi := &file_whitelabelairport_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1061,7 +1062,7 @@ func (x *SystemProxyStatus) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SystemProxyStatus.ProtoReflect.Descriptor instead.
 func (*SystemProxyStatus) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{11}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *SystemProxyStatus) GetAvailable() bool {
@@ -1092,7 +1093,7 @@ type ParseRequest struct {
 func (x *ParseRequest) Reset() {
 	*x = ParseRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[12]
+		mi := &file_whitelabelairport_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1105,7 +1106,7 @@ func (x *ParseRequest) String() string {
 func (*ParseRequest) ProtoMessage() {}
 
 func (x *ParseRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[12]
+	mi := &file_whitelabelairport_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1118,7 +1119,7 @@ func (x *ParseRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ParseRequest.ProtoReflect.Descriptor instead.
 func (*ParseRequest) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{12}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ParseRequest) GetContent() string {
@@ -1154,7 +1155,7 @@ type ParseResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ResponseCode ResponseCode `protobuf:"varint,1,opt,name=response_code,json=responseCode,proto3,enum=hiddifyrpc.ResponseCode" json:"response_code,omitempty"`
+	ResponseCode ResponseCode `protobuf:"varint,1,opt,name=response_code,json=responseCode,proto3,enum=whitelabelairportrpc.ResponseCode" json:"response_code,omitempty"`
 	Content      string       `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"`
 	Message      string       `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
 }
@@ -1162,7 +1163,7 @@ type ParseResponse struct {
 func (x *ParseResponse) Reset() {
 	*x = ParseResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[13]
+		mi := &file_whitelabelairport_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1175,7 +1176,7 @@ func (x *ParseResponse) String() string {
 func (*ParseResponse) ProtoMessage() {}
 
 func (x *ParseResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[13]
+	mi := &file_whitelabelairport_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1188,7 +1189,7 @@ func (x *ParseResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ParseResponse.ProtoReflect.Descriptor instead.
 func (*ParseResponse) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{13}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ParseResponse) GetResponseCode() ResponseCode {
@@ -1212,31 +1213,31 @@ func (x *ParseResponse) GetMessage() string {
 	return ""
 }
 
-type ChangeHiddifySettingsRequest struct {
+type ChangeWhiteLabelAirportSettingsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	HiddifySettingsJson string `protobuf:"bytes,1,opt,name=hiddify_settings_json,json=hiddifySettingsJson,proto3" json:"hiddify_settings_json,omitempty"`
+	WhiteLabelAirportSettingsJson string `protobuf:"bytes,1,opt,name=whitelabelairport_settings_json,json=whitelabelairportSettingsJson,proto3" json:"whitelabelairport_settings_json,omitempty"`
 }
 
-func (x *ChangeHiddifySettingsRequest) Reset() {
-	*x = ChangeHiddifySettingsRequest{}
+func (x *ChangeWhiteLabelAirportSettingsRequest) Reset() {
+	*x = ChangeWhiteLabelAirportSettingsRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[14]
+		mi := &file_whitelabelairport_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
 }
 
-func (x *ChangeHiddifySettingsRequest) String() string {
+func (x *ChangeWhiteLabelAirportSettingsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ChangeHiddifySettingsRequest) ProtoMessage() {}
+func (*ChangeWhiteLabelAirportSettingsRequest) ProtoMessage() {}
 
-func (x *ChangeHiddifySettingsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[14]
+func (x *ChangeWhiteLabelAirportSettingsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_whitelabelairport_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1247,14 +1248,14 @@ func (x *ChangeHiddifySettingsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ChangeHiddifySettingsRequest.ProtoReflect.Descriptor instead.
-func (*ChangeHiddifySettingsRequest) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{14}
+// Deprecated: Use ChangeWhiteLabelAirportSettingsRequest.ProtoReflect.Descriptor instead.
+func (*ChangeWhiteLabelAirportSettingsRequest) Descriptor() ([]byte, []int) {
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *ChangeHiddifySettingsRequest) GetHiddifySettingsJson() string {
+func (x *ChangeWhiteLabelAirportSettingsRequest) GetWhiteLabelAirportSettingsJson() string {
 	if x != nil {
-		return x.HiddifySettingsJson
+		return x.WhiteLabelAirportSettingsJson
 	}
 	return ""
 }
@@ -1272,7 +1273,7 @@ type GenerateConfigRequest struct {
 func (x *GenerateConfigRequest) Reset() {
 	*x = GenerateConfigRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[15]
+		mi := &file_whitelabelairport_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1285,7 +1286,7 @@ func (x *GenerateConfigRequest) String() string {
 func (*GenerateConfigRequest) ProtoMessage() {}
 
 func (x *GenerateConfigRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[15]
+	mi := &file_whitelabelairport_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1298,7 +1299,7 @@ func (x *GenerateConfigRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenerateConfigRequest.ProtoReflect.Descriptor instead.
 func (*GenerateConfigRequest) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{15}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GenerateConfigRequest) GetPath() string {
@@ -1333,7 +1334,7 @@ type GenerateConfigResponse struct {
 func (x *GenerateConfigResponse) Reset() {
 	*x = GenerateConfigResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[16]
+		mi := &file_whitelabelairport_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1346,7 +1347,7 @@ func (x *GenerateConfigResponse) String() string {
 func (*GenerateConfigResponse) ProtoMessage() {}
 
 func (x *GenerateConfigResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[16]
+	mi := &file_whitelabelairport_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1359,7 +1360,7 @@ func (x *GenerateConfigResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenerateConfigResponse.ProtoReflect.Descriptor instead.
 func (*GenerateConfigResponse) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{16}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GenerateConfigResponse) GetConfigContent() string {
@@ -1381,7 +1382,7 @@ type SelectOutboundRequest struct {
 func (x *SelectOutboundRequest) Reset() {
 	*x = SelectOutboundRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[17]
+		mi := &file_whitelabelairport_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1394,7 +1395,7 @@ func (x *SelectOutboundRequest) String() string {
 func (*SelectOutboundRequest) ProtoMessage() {}
 
 func (x *SelectOutboundRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[17]
+	mi := &file_whitelabelairport_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1407,7 +1408,7 @@ func (x *SelectOutboundRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SelectOutboundRequest.ProtoReflect.Descriptor instead.
 func (*SelectOutboundRequest) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{17}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *SelectOutboundRequest) GetGroupTag() string {
@@ -1435,7 +1436,7 @@ type UrlTestRequest struct {
 func (x *UrlTestRequest) Reset() {
 	*x = UrlTestRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[18]
+		mi := &file_whitelabelairport_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1448,7 +1449,7 @@ func (x *UrlTestRequest) String() string {
 func (*UrlTestRequest) ProtoMessage() {}
 
 func (x *UrlTestRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[18]
+	mi := &file_whitelabelairport_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1461,7 +1462,7 @@ func (x *UrlTestRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UrlTestRequest.ProtoReflect.Descriptor instead.
 func (*UrlTestRequest) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{18}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *UrlTestRequest) GetGroupTag() string {
@@ -1484,7 +1485,7 @@ type GenerateWarpConfigRequest struct {
 func (x *GenerateWarpConfigRequest) Reset() {
 	*x = GenerateWarpConfigRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[19]
+		mi := &file_whitelabelairport_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1497,7 +1498,7 @@ func (x *GenerateWarpConfigRequest) String() string {
 func (*GenerateWarpConfigRequest) ProtoMessage() {}
 
 func (x *GenerateWarpConfigRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[19]
+	mi := &file_whitelabelairport_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1510,7 +1511,7 @@ func (x *GenerateWarpConfigRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenerateWarpConfigRequest.ProtoReflect.Descriptor instead.
 func (*GenerateWarpConfigRequest) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{19}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *GenerateWarpConfigRequest) GetLicenseKey() string {
@@ -1545,7 +1546,7 @@ type SetSystemProxyEnabledRequest struct {
 func (x *SetSystemProxyEnabledRequest) Reset() {
 	*x = SetSystemProxyEnabledRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[20]
+		mi := &file_whitelabelairport_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1558,7 +1559,7 @@ func (x *SetSystemProxyEnabledRequest) String() string {
 func (*SetSystemProxyEnabledRequest) ProtoMessage() {}
 
 func (x *SetSystemProxyEnabledRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[20]
+	mi := &file_whitelabelairport_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1571,7 +1572,7 @@ func (x *SetSystemProxyEnabledRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetSystemProxyEnabledRequest.ProtoReflect.Descriptor instead.
 func (*SetSystemProxyEnabledRequest) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{20}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *SetSystemProxyEnabledRequest) GetIsEnabled() bool {
@@ -1586,15 +1587,15 @@ type LogMessage struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Level   LogLevel `protobuf:"varint,1,opt,name=level,proto3,enum=hiddifyrpc.LogLevel" json:"level,omitempty"`
-	Type    LogType  `protobuf:"varint,2,opt,name=type,proto3,enum=hiddifyrpc.LogType" json:"type,omitempty"`
+	Level   LogLevel `protobuf:"varint,1,opt,name=level,proto3,enum=whitelabelairportrpc.LogLevel" json:"level,omitempty"`
+	Type    LogType  `protobuf:"varint,2,opt,name=type,proto3,enum=whitelabelairportrpc.LogType" json:"type,omitempty"`
 	Message string   `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
 }
 
 func (x *LogMessage) Reset() {
 	*x = LogMessage{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[21]
+		mi := &file_whitelabelairport_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1607,7 +1608,7 @@ func (x *LogMessage) String() string {
 func (*LogMessage) ProtoMessage() {}
 
 func (x *LogMessage) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[21]
+	mi := &file_whitelabelairport_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1620,7 +1621,7 @@ func (x *LogMessage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogMessage.ProtoReflect.Descriptor instead.
 func (*LogMessage) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{21}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *LogMessage) GetLevel() LogLevel {
@@ -1653,7 +1654,7 @@ type StopRequest struct {
 func (x *StopRequest) Reset() {
 	*x = StopRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[22]
+		mi := &file_whitelabelairport_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1666,7 +1667,7 @@ func (x *StopRequest) String() string {
 func (*StopRequest) ProtoMessage() {}
 
 func (x *StopRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[22]
+	mi := &file_whitelabelairport_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1679,7 +1680,7 @@ func (x *StopRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StopRequest.ProtoReflect.Descriptor instead.
 func (*StopRequest) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{22}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{22}
 }
 
 type TunnelStartRequest struct {
@@ -1697,7 +1698,7 @@ type TunnelStartRequest struct {
 func (x *TunnelStartRequest) Reset() {
 	*x = TunnelStartRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[23]
+		mi := &file_whitelabelairport_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1710,7 +1711,7 @@ func (x *TunnelStartRequest) String() string {
 func (*TunnelStartRequest) ProtoMessage() {}
 
 func (x *TunnelStartRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[23]
+	mi := &file_whitelabelairport_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1723,7 +1724,7 @@ func (x *TunnelStartRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TunnelStartRequest.ProtoReflect.Descriptor instead.
 func (*TunnelStartRequest) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{23}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *TunnelStartRequest) GetIpv6() bool {
@@ -1772,7 +1773,7 @@ type TunnelResponse struct {
 func (x *TunnelResponse) Reset() {
 	*x = TunnelResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hiddify_proto_msgTypes[24]
+		mi := &file_whitelabelairport_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1785,7 +1786,7 @@ func (x *TunnelResponse) String() string {
 func (*TunnelResponse) ProtoMessage() {}
 
 func (x *TunnelResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_hiddify_proto_msgTypes[24]
+	mi := &file_whitelabelairport_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1798,7 +1799,7 @@ func (x *TunnelResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TunnelResponse.ProtoReflect.Descriptor instead.
 func (*TunnelResponse) Descriptor() ([]byte, []int) {
-	return file_hiddify_proto_rawDescGZIP(), []int{24}
+	return file_whitelabelairport_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *TunnelResponse) GetMessage() string {
@@ -1808,9 +1809,9 @@ func (x *TunnelResponse) GetMessage() string {
 	return ""
 }
 
-var File_hiddify_proto protoreflect.FileDescriptor
+var File_whitelabelairport_proto protoreflect.FileDescriptor
 
-var file_hiddify_proto_rawDesc = []byte{
+var file_whitelabelairport_proto_rawDesc = []byte{
 	0x0a, 0x0d, 0x68, 0x69, 0x64, 0x64, 0x69, 0x66, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12,
 	0x0a, 0x68, 0x69, 0x64, 0x64, 0x69, 0x66, 0x79, 0x72, 0x70, 0x63, 0x1a, 0x0a, 0x62, 0x61, 0x73,
 	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x9e, 0x01, 0x0a, 0x10, 0x43, 0x6f, 0x72, 0x65,
@@ -2142,111 +2143,111 @@ var file_hiddify_proto_rawDesc = []byte{
 }
 
 var (
-	file_hiddify_proto_rawDescOnce sync.Once
-	file_hiddify_proto_rawDescData = file_hiddify_proto_rawDesc
+	file_whitelabelairport_proto_rawDescOnce sync.Once
+	file_whitelabelairport_proto_rawDescData = file_whitelabelairport_proto_rawDesc
 )
 
-func file_hiddify_proto_rawDescGZIP() []byte {
-	file_hiddify_proto_rawDescOnce.Do(func() {
-		file_hiddify_proto_rawDescData = protoimpl.X.CompressGZIP(file_hiddify_proto_rawDescData)
+func file_whitelabelairport_proto_rawDescGZIP() []byte {
+	file_whitelabelairport_proto_rawDescOnce.Do(func() {
+		file_whitelabelairport_proto_rawDescData = protoimpl.X.CompressGZIP(file_whitelabelairport_proto_rawDescData)
 	})
-	return file_hiddify_proto_rawDescData
+	return file_whitelabelairport_proto_rawDescData
 }
 
-var file_hiddify_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_hiddify_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
-var file_hiddify_proto_goTypes = []any{
-	(CoreState)(0),                       // 0: hiddifyrpc.CoreState
-	(MessageType)(0),                     // 1: hiddifyrpc.MessageType
-	(LogLevel)(0),                        // 2: hiddifyrpc.LogLevel
-	(LogType)(0),                         // 3: hiddifyrpc.LogType
-	(*CoreInfoResponse)(nil),             // 4: hiddifyrpc.CoreInfoResponse
-	(*StartRequest)(nil),                 // 5: hiddifyrpc.StartRequest
-	(*SetupRequest)(nil),                 // 6: hiddifyrpc.SetupRequest
-	(*Response)(nil),                     // 7: hiddifyrpc.Response
-	(*SystemInfo)(nil),                   // 8: hiddifyrpc.SystemInfo
-	(*OutboundGroupItem)(nil),            // 9: hiddifyrpc.OutboundGroupItem
-	(*OutboundGroup)(nil),                // 10: hiddifyrpc.OutboundGroup
-	(*OutboundGroupList)(nil),            // 11: hiddifyrpc.OutboundGroupList
-	(*WarpAccount)(nil),                  // 12: hiddifyrpc.WarpAccount
-	(*WarpWireguardConfig)(nil),          // 13: hiddifyrpc.WarpWireguardConfig
-	(*WarpGenerationResponse)(nil),       // 14: hiddifyrpc.WarpGenerationResponse
-	(*SystemProxyStatus)(nil),            // 15: hiddifyrpc.SystemProxyStatus
-	(*ParseRequest)(nil),                 // 16: hiddifyrpc.ParseRequest
-	(*ParseResponse)(nil),                // 17: hiddifyrpc.ParseResponse
-	(*ChangeHiddifySettingsRequest)(nil), // 18: hiddifyrpc.ChangeHiddifySettingsRequest
-	(*GenerateConfigRequest)(nil),        // 19: hiddifyrpc.GenerateConfigRequest
-	(*GenerateConfigResponse)(nil),       // 20: hiddifyrpc.GenerateConfigResponse
-	(*SelectOutboundRequest)(nil),        // 21: hiddifyrpc.SelectOutboundRequest
-	(*UrlTestRequest)(nil),               // 22: hiddifyrpc.UrlTestRequest
-	(*GenerateWarpConfigRequest)(nil),    // 23: hiddifyrpc.GenerateWarpConfigRequest
-	(*SetSystemProxyEnabledRequest)(nil), // 24: hiddifyrpc.SetSystemProxyEnabledRequest
-	(*LogMessage)(nil),                   // 25: hiddifyrpc.LogMessage
-	(*StopRequest)(nil),                  // 26: hiddifyrpc.StopRequest
-	(*TunnelStartRequest)(nil),           // 27: hiddifyrpc.TunnelStartRequest
-	(*TunnelResponse)(nil),               // 28: hiddifyrpc.TunnelResponse
-	(ResponseCode)(0),                    // 29: hiddifyrpc.ResponseCode
-	(*HelloRequest)(nil),                 // 30: hiddifyrpc.HelloRequest
-	(*Empty)(nil),                        // 31: hiddifyrpc.Empty
-	(*HelloResponse)(nil),                // 32: hiddifyrpc.HelloResponse
+var file_whitelabelairport_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
+var file_whitelabelairport_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
+var file_whitelabelairport_proto_goTypes = []any{
+	(CoreState)(0),                                 // 0: whitelabelairportrpc.CoreState
+	(MessageType)(0),                               // 1: whitelabelairportrpc.MessageType
+	(LogLevel)(0),                                  // 2: whitelabelairportrpc.LogLevel
+	(LogType)(0),                                   // 3: whitelabelairportrpc.LogType
+	(*CoreInfoResponse)(nil),                       // 4: whitelabelairportrpc.CoreInfoResponse
+	(*StartRequest)(nil),                           // 5: whitelabelairportrpc.StartRequest
+	(*SetupRequest)(nil),                           // 6: whitelabelairportrpc.SetupRequest
+	(*Response)(nil),                               // 7: whitelabelairportrpc.Response
+	(*SystemInfo)(nil),                             // 8: whitelabelairportrpc.SystemInfo
+	(*OutboundGroupItem)(nil),                      // 9: whitelabelairportrpc.OutboundGroupItem
+	(*OutboundGroup)(nil),                          // 10: whitelabelairportrpc.OutboundGroup
+	(*OutboundGroupList)(nil),                      // 11: whitelabelairportrpc.OutboundGroupList
+	(*WarpAccount)(nil),                            // 12: whitelabelairportrpc.WarpAccount
+	(*WarpWireguardConfig)(nil),                    // 13: whitelabelairportrpc.WarpWireguardConfig
+	(*WarpGenerationResponse)(nil),                 // 14: whitelabelairportrpc.WarpGenerationResponse
+	(*SystemProxyStatus)(nil),                      // 15: whitelabelairportrpc.SystemProxyStatus
+	(*ParseRequest)(nil),                           // 16: whitelabelairportrpc.ParseRequest
+	(*ParseResponse)(nil),                          // 17: whitelabelairportrpc.ParseResponse
+	(*ChangeWhiteLabelAirportSettingsRequest)(nil), // 18: whitelabelairportrpc.ChangeWhiteLabelAirportSettingsRequest
+	(*GenerateConfigRequest)(nil),                  // 19: whitelabelairportrpc.GenerateConfigRequest
+	(*GenerateConfigResponse)(nil),                 // 20: whitelabelairportrpc.GenerateConfigResponse
+	(*SelectOutboundRequest)(nil),                  // 21: whitelabelairportrpc.SelectOutboundRequest
+	(*UrlTestRequest)(nil),                         // 22: whitelabelairportrpc.UrlTestRequest
+	(*GenerateWarpConfigRequest)(nil),              // 23: whitelabelairportrpc.GenerateWarpConfigRequest
+	(*SetSystemProxyEnabledRequest)(nil),           // 24: whitelabelairportrpc.SetSystemProxyEnabledRequest
+	(*LogMessage)(nil),                             // 25: whitelabelairportrpc.LogMessage
+	(*StopRequest)(nil),                            // 26: whitelabelairportrpc.StopRequest
+	(*TunnelStartRequest)(nil),                     // 27: whitelabelairportrpc.TunnelStartRequest
+	(*TunnelResponse)(nil),                         // 28: whitelabelairportrpc.TunnelResponse
+	(ResponseCode)(0),                              // 29: whitelabelairportrpc.ResponseCode
+	(*HelloRequest)(nil),                           // 30: whitelabelairportrpc.HelloRequest
+	(*Empty)(nil),                                  // 31: whitelabelairportrpc.Empty
+	(*HelloResponse)(nil),                          // 32: whitelabelairportrpc.HelloResponse
 }
-var file_hiddify_proto_depIdxs = []int32{
-	0,  // 0: hiddifyrpc.CoreInfoResponse.core_state:type_name -> hiddifyrpc.CoreState
-	1,  // 1: hiddifyrpc.CoreInfoResponse.message_type:type_name -> hiddifyrpc.MessageType
-	29, // 2: hiddifyrpc.Response.response_code:type_name -> hiddifyrpc.ResponseCode
-	9,  // 3: hiddifyrpc.OutboundGroup.items:type_name -> hiddifyrpc.OutboundGroupItem
-	10, // 4: hiddifyrpc.OutboundGroupList.items:type_name -> hiddifyrpc.OutboundGroup
-	12, // 5: hiddifyrpc.WarpGenerationResponse.account:type_name -> hiddifyrpc.WarpAccount
-	13, // 6: hiddifyrpc.WarpGenerationResponse.config:type_name -> hiddifyrpc.WarpWireguardConfig
-	29, // 7: hiddifyrpc.ParseResponse.response_code:type_name -> hiddifyrpc.ResponseCode
-	2,  // 8: hiddifyrpc.LogMessage.level:type_name -> hiddifyrpc.LogLevel
-	3,  // 9: hiddifyrpc.LogMessage.type:type_name -> hiddifyrpc.LogType
-	30, // 10: hiddifyrpc.Hello.SayHello:input_type -> hiddifyrpc.HelloRequest
-	30, // 11: hiddifyrpc.Hello.SayHelloStream:input_type -> hiddifyrpc.HelloRequest
-	5,  // 12: hiddifyrpc.Core.Start:input_type -> hiddifyrpc.StartRequest
-	31, // 13: hiddifyrpc.Core.CoreInfoListener:input_type -> hiddifyrpc.Empty
-	31, // 14: hiddifyrpc.Core.OutboundsInfo:input_type -> hiddifyrpc.Empty
-	31, // 15: hiddifyrpc.Core.MainOutboundsInfo:input_type -> hiddifyrpc.Empty
-	31, // 16: hiddifyrpc.Core.GetSystemInfo:input_type -> hiddifyrpc.Empty
-	6,  // 17: hiddifyrpc.Core.Setup:input_type -> hiddifyrpc.SetupRequest
-	16, // 18: hiddifyrpc.Core.Parse:input_type -> hiddifyrpc.ParseRequest
-	18, // 19: hiddifyrpc.Core.ChangeHiddifySettings:input_type -> hiddifyrpc.ChangeHiddifySettingsRequest
-	5,  // 20: hiddifyrpc.Core.StartService:input_type -> hiddifyrpc.StartRequest
-	31, // 21: hiddifyrpc.Core.Stop:input_type -> hiddifyrpc.Empty
-	5,  // 22: hiddifyrpc.Core.Restart:input_type -> hiddifyrpc.StartRequest
-	21, // 23: hiddifyrpc.Core.SelectOutbound:input_type -> hiddifyrpc.SelectOutboundRequest
-	22, // 24: hiddifyrpc.Core.UrlTest:input_type -> hiddifyrpc.UrlTestRequest
-	23, // 25: hiddifyrpc.Core.GenerateWarpConfig:input_type -> hiddifyrpc.GenerateWarpConfigRequest
-	31, // 26: hiddifyrpc.Core.GetSystemProxyStatus:input_type -> hiddifyrpc.Empty
-	24, // 27: hiddifyrpc.Core.SetSystemProxyEnabled:input_type -> hiddifyrpc.SetSystemProxyEnabledRequest
-	31, // 28: hiddifyrpc.Core.LogListener:input_type -> hiddifyrpc.Empty
-	27, // 29: hiddifyrpc.TunnelService.Start:input_type -> hiddifyrpc.TunnelStartRequest
-	31, // 30: hiddifyrpc.TunnelService.Stop:input_type -> hiddifyrpc.Empty
-	31, // 31: hiddifyrpc.TunnelService.Status:input_type -> hiddifyrpc.Empty
-	31, // 32: hiddifyrpc.TunnelService.Exit:input_type -> hiddifyrpc.Empty
-	32, // 33: hiddifyrpc.Hello.SayHello:output_type -> hiddifyrpc.HelloResponse
-	32, // 34: hiddifyrpc.Hello.SayHelloStream:output_type -> hiddifyrpc.HelloResponse
-	4,  // 35: hiddifyrpc.Core.Start:output_type -> hiddifyrpc.CoreInfoResponse
-	4,  // 36: hiddifyrpc.Core.CoreInfoListener:output_type -> hiddifyrpc.CoreInfoResponse
-	11, // 37: hiddifyrpc.Core.OutboundsInfo:output_type -> hiddifyrpc.OutboundGroupList
-	11, // 38: hiddifyrpc.Core.MainOutboundsInfo:output_type -> hiddifyrpc.OutboundGroupList
-	8,  // 39: hiddifyrpc.Core.GetSystemInfo:output_type -> hiddifyrpc.SystemInfo
-	7,  // 40: hiddifyrpc.Core.Setup:output_type -> hiddifyrpc.Response
-	17, // 41: hiddifyrpc.Core.Parse:output_type -> hiddifyrpc.ParseResponse
-	4,  // 42: hiddifyrpc.Core.ChangeHiddifySettings:output_type -> hiddifyrpc.CoreInfoResponse
-	4,  // 43: hiddifyrpc.Core.StartService:output_type -> hiddifyrpc.CoreInfoResponse
-	4,  // 44: hiddifyrpc.Core.Stop:output_type -> hiddifyrpc.CoreInfoResponse
-	4,  // 45: hiddifyrpc.Core.Restart:output_type -> hiddifyrpc.CoreInfoResponse
-	7,  // 46: hiddifyrpc.Core.SelectOutbound:output_type -> hiddifyrpc.Response
-	7,  // 47: hiddifyrpc.Core.UrlTest:output_type -> hiddifyrpc.Response
-	14, // 48: hiddifyrpc.Core.GenerateWarpConfig:output_type -> hiddifyrpc.WarpGenerationResponse
-	15, // 49: hiddifyrpc.Core.GetSystemProxyStatus:output_type -> hiddifyrpc.SystemProxyStatus
-	7,  // 50: hiddifyrpc.Core.SetSystemProxyEnabled:output_type -> hiddifyrpc.Response
-	25, // 51: hiddifyrpc.Core.LogListener:output_type -> hiddifyrpc.LogMessage
-	28, // 52: hiddifyrpc.TunnelService.Start:output_type -> hiddifyrpc.TunnelResponse
-	28, // 53: hiddifyrpc.TunnelService.Stop:output_type -> hiddifyrpc.TunnelResponse
-	28, // 54: hiddifyrpc.TunnelService.Status:output_type -> hiddifyrpc.TunnelResponse
-	28, // 55: hiddifyrpc.TunnelService.Exit:output_type -> hiddifyrpc.TunnelResponse
+var file_whitelabelairport_proto_depIdxs = []int32{
+	0,  // 0: whitelabelairportrpc.CoreInfoResponse.core_state:type_name -> whitelabelairportrpc.CoreState
+	1,  // 1: whitelabelairportrpc.CoreInfoResponse.message_type:type_name -> whitelabelairportrpc.MessageType
+	29, // 2: whitelabelairportrpc.Response.response_code:type_name -> whitelabelairportrpc.ResponseCode
+	9,  // 3: whitelabelairportrpc.OutboundGroup.items:type_name -> whitelabelairportrpc.OutboundGroupItem
+	10, // 4: whitelabelairportrpc.OutboundGroupList.items:type_name -> whitelabelairportrpc.OutboundGroup
+	12, // 5: whitelabelairportrpc.WarpGenerationResponse.account:type_name -> whitelabelairportrpc.WarpAccount
+	13, // 6: whitelabelairportrpc.WarpGenerationResponse.config:type_name -> whitelabelairportrpc.WarpWireguardConfig
+	29, // 7: whitelabelairportrpc.ParseResponse.response_code:type_name -> whitelabelairportrpc.ResponseCode
+	2,  // 8: whitelabelairportrpc.LogMessage.level:type_name -> whitelabelairportrpc.LogLevel
+	3,  // 9: whitelabelairportrpc.LogMessage.type:type_name -> whitelabelairportrpc.LogType
+	30, // 10: whitelabelairportrpc.Hello.SayHello:input_type -> whitelabelairportrpc.HelloRequest
+	30, // 11: whitelabelairportrpc.Hello.SayHelloStream:input_type -> whitelabelairportrpc.HelloRequest
+	5,  // 12: whitelabelairportrpc.Core.Start:input_type -> whitelabelairportrpc.StartRequest
+	31, // 13: whitelabelairportrpc.Core.CoreInfoListener:input_type -> whitelabelairportrpc.Empty
+	31, // 14: whitelabelairportrpc.Core.OutboundsInfo:input_type -> whitelabelairportrpc.Empty
+	31, // 15: whitelabelairportrpc.Core.MainOutboundsInfo:input_type -> whitelabelairportrpc.Empty
+	31, // 16: whitelabelairportrpc.Core.GetSystemInfo:input_type -> whitelabelairportrpc.Empty
+	6,  // 17: whitelabelairportrpc.Core.Setup:input_type -> whitelabelairportrpc.SetupRequest
+	16, // 18: whitelabelairportrpc.Core.Parse:input_type -> whitelabelairportrpc.ParseRequest
+	18, // 19: whitelabelairportrpc.Core.ChangeWhiteLabelAirportSettings:input_type -> whitelabelairportrpc.ChangeWhiteLabelAirportSettingsRequest
+	5,  // 20: whitelabelairportrpc.Core.StartService:input_type -> whitelabelairportrpc.StartRequest
+	31, // 21: whitelabelairportrpc.Core.Stop:input_type -> whitelabelairportrpc.Empty
+	5,  // 22: whitelabelairportrpc.Core.Restart:input_type -> whitelabelairportrpc.StartRequest
+	21, // 23: whitelabelairportrpc.Core.SelectOutbound:input_type -> whitelabelairportrpc.SelectOutboundRequest
+	22, // 24: whitelabelairportrpc.Core.UrlTest:input_type -> whitelabelairportrpc.UrlTestRequest
+	23, // 25: whitelabelairportrpc.Core.GenerateWarpConfig:input_type -> whitelabelairportrpc.GenerateWarpConfigRequest
+	31, // 26: whitelabelairportrpc.Core.GetSystemProxyStatus:input_type -> whitelabelairportrpc.Empty
+	24, // 27: whitelabelairportrpc.Core.SetSystemProxyEnabled:input_type -> whitelabelairportrpc.SetSystemProxyEnabledRequest
+	31, // 28: whitelabelairportrpc.Core.LogListener:input_type -> whitelabelairportrpc.Empty
+	27, // 29: whitelabelairportrpc.TunnelService.Start:input_type -> whitelabelairportrpc.TunnelStartRequest
+	31, // 30: whitelabelairportrpc.TunnelService.Stop:input_type -> whitelabelairportrpc.Empty
+	31, // 31: whitelabelairportrpc.TunnelService.Status:input_type -> whitelabelairportrpc.Empty
+	31, // 32: whitelabelairportrpc.TunnelService.Exit:input_type -> whitelabelairportrpc.Empty
+	32, // 33: whitelabelairportrpc.Hello.SayHello:output_type -> whitelabelairportrpc.HelloResponse
+	32, // 34: whitelabelairportrpc.Hello.SayHelloStream:output_type -> whitelabelairportrpc.HelloResponse
+	4,  // 35: whitelabelairportrpc.Core.Start:output_type -> whitelabelairportrpc.CoreInfoResponse
+	4,  // 36: whitelabelairportrpc.Core.CoreInfoListener:output_type -> whitelabelairportrpc.CoreInfoResponse
+	11, // 37: whitelabelairportrpc.Core.OutboundsInfo:output_type -> whitelabelairportrpc.OutboundGroupList
+	11, // 38: whitelabelairportrpc.Core.MainOutboundsInfo:output_type -> whitelabelairportrpc.OutboundGroupList
+	8,  // 39: whitelabelairportrpc.Core.GetSystemInfo:output_type -> whitelabelairportrpc.SystemInfo
+	7,  // 40: whitelabelairportrpc.Core.Setup:output_type -> whitelabelairportrpc.Response
+	17, // 41: whitelabelairportrpc.Core.Parse:output_type -> whitelabelairportrpc.ParseResponse
+	4,  // 42: whitelabelairportrpc.Core.ChangeWhiteLabelAirportSettings:output_type -> whitelabelairportrpc.CoreInfoResponse
+	4,  // 43: whitelabelairportrpc.Core.StartService:output_type -> whitelabelairportrpc.CoreInfoResponse
+	4,  // 44: whitelabelairportrpc.Core.Stop:output_type -> whitelabelairportrpc.CoreInfoResponse
+	4,  // 45: whitelabelairportrpc.Core.Restart:output_type -> whitelabelairportrpc.CoreInfoResponse
+	7,  // 46: whitelabelairportrpc.Core.SelectOutbound:output_type -> whitelabelairportrpc.Response
+	7,  // 47: whitelabelairportrpc.Core.UrlTest:output_type -> whitelabelairportrpc.Response
+	14, // 48: whitelabelairportrpc.Core.GenerateWarpConfig:output_type -> whitelabelairportrpc.WarpGenerationResponse
+	15, // 49: whitelabelairportrpc.Core.GetSystemProxyStatus:output_type -> whitelabelairportrpc.SystemProxyStatus
+	7,  // 50: whitelabelairportrpc.Core.SetSystemProxyEnabled:output_type -> whitelabelairportrpc.Response
+	25, // 51: whitelabelairportrpc.Core.LogListener:output_type -> whitelabelairportrpc.LogMessage
+	28, // 52: whitelabelairportrpc.TunnelService.Start:output_type -> whitelabelairportrpc.TunnelResponse
+	28, // 53: whitelabelairportrpc.TunnelService.Stop:output_type -> whitelabelairportrpc.TunnelResponse
+	28, // 54: whitelabelairportrpc.TunnelService.Status:output_type -> whitelabelairportrpc.TunnelResponse
+	28, // 55: whitelabelairportrpc.TunnelService.Exit:output_type -> whitelabelairportrpc.TunnelResponse
 	33, // [33:56] is the sub-list for method output_type
 	10, // [10:33] is the sub-list for method input_type
 	10, // [10:10] is the sub-list for extension type_name
@@ -2254,14 +2255,14 @@ var file_hiddify_proto_depIdxs = []int32{
 	0,  // [0:10] is the sub-list for field type_name
 }
 
-func init() { file_hiddify_proto_init() }
-func file_hiddify_proto_init() {
-	if File_hiddify_proto != nil {
+func init() { file_whitelabelairport_proto_init() }
+func file_whitelabelairport_proto_init() {
+	if File_whitelabelairport_proto != nil {
 		return
 	}
 	file_base_proto_init()
 	if !protoimpl.UnsafeEnabled {
-		file_hiddify_proto_msgTypes[0].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[0].Exporter = func(v any, i int) any {
 			switch v := v.(*CoreInfoResponse); i {
 			case 0:
 				return &v.state
@@ -2273,7 +2274,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[1].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[1].Exporter = func(v any, i int) any {
 			switch v := v.(*StartRequest); i {
 			case 0:
 				return &v.state
@@ -2285,7 +2286,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[2].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[2].Exporter = func(v any, i int) any {
 			switch v := v.(*SetupRequest); i {
 			case 0:
 				return &v.state
@@ -2297,7 +2298,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[3].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[3].Exporter = func(v any, i int) any {
 			switch v := v.(*Response); i {
 			case 0:
 				return &v.state
@@ -2309,7 +2310,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[4].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[4].Exporter = func(v any, i int) any {
 			switch v := v.(*SystemInfo); i {
 			case 0:
 				return &v.state
@@ -2321,7 +2322,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[5].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[5].Exporter = func(v any, i int) any {
 			switch v := v.(*OutboundGroupItem); i {
 			case 0:
 				return &v.state
@@ -2333,7 +2334,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[6].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[6].Exporter = func(v any, i int) any {
 			switch v := v.(*OutboundGroup); i {
 			case 0:
 				return &v.state
@@ -2345,7 +2346,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[7].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[7].Exporter = func(v any, i int) any {
 			switch v := v.(*OutboundGroupList); i {
 			case 0:
 				return &v.state
@@ -2357,7 +2358,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[8].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[8].Exporter = func(v any, i int) any {
 			switch v := v.(*WarpAccount); i {
 			case 0:
 				return &v.state
@@ -2369,7 +2370,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[9].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[9].Exporter = func(v any, i int) any {
 			switch v := v.(*WarpWireguardConfig); i {
 			case 0:
 				return &v.state
@@ -2381,7 +2382,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[10].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[10].Exporter = func(v any, i int) any {
 			switch v := v.(*WarpGenerationResponse); i {
 			case 0:
 				return &v.state
@@ -2393,7 +2394,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[11].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[11].Exporter = func(v any, i int) any {
 			switch v := v.(*SystemProxyStatus); i {
 			case 0:
 				return &v.state
@@ -2405,7 +2406,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[12].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[12].Exporter = func(v any, i int) any {
 			switch v := v.(*ParseRequest); i {
 			case 0:
 				return &v.state
@@ -2417,7 +2418,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[13].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[13].Exporter = func(v any, i int) any {
 			switch v := v.(*ParseResponse); i {
 			case 0:
 				return &v.state
@@ -2429,8 +2430,8 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[14].Exporter = func(v any, i int) any {
-			switch v := v.(*ChangeHiddifySettingsRequest); i {
+		file_whitelabelairport_proto_msgTypes[14].Exporter = func(v any, i int) any {
+			switch v := v.(*ChangeWhiteLabelAirportSettingsRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2441,7 +2442,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[15].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[15].Exporter = func(v any, i int) any {
 			switch v := v.(*GenerateConfigRequest); i {
 			case 0:
 				return &v.state
@@ -2453,7 +2454,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[16].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[16].Exporter = func(v any, i int) any {
 			switch v := v.(*GenerateConfigResponse); i {
 			case 0:
 				return &v.state
@@ -2465,7 +2466,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[17].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[17].Exporter = func(v any, i int) any {
 			switch v := v.(*SelectOutboundRequest); i {
 			case 0:
 				return &v.state
@@ -2477,7 +2478,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[18].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[18].Exporter = func(v any, i int) any {
 			switch v := v.(*UrlTestRequest); i {
 			case 0:
 				return &v.state
@@ -2489,7 +2490,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[19].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[19].Exporter = func(v any, i int) any {
 			switch v := v.(*GenerateWarpConfigRequest); i {
 			case 0:
 				return &v.state
@@ -2501,7 +2502,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[20].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[20].Exporter = func(v any, i int) any {
 			switch v := v.(*SetSystemProxyEnabledRequest); i {
 			case 0:
 				return &v.state
@@ -2513,7 +2514,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[21].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[21].Exporter = func(v any, i int) any {
 			switch v := v.(*LogMessage); i {
 			case 0:
 				return &v.state
@@ -2525,7 +2526,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[22].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[22].Exporter = func(v any, i int) any {
 			switch v := v.(*StopRequest); i {
 			case 0:
 				return &v.state
@@ -2537,7 +2538,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[23].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[23].Exporter = func(v any, i int) any {
 			switch v := v.(*TunnelStartRequest); i {
 			case 0:
 				return &v.state
@@ -2549,7 +2550,7 @@ func file_hiddify_proto_init() {
 				return nil
 			}
 		}
-		file_hiddify_proto_msgTypes[24].Exporter = func(v any, i int) any {
+		file_whitelabelairport_proto_msgTypes[24].Exporter = func(v any, i int) any {
 			switch v := v.(*TunnelResponse); i {
 			case 0:
 				return &v.state
@@ -2566,19 +2567,19 @@ func file_hiddify_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_hiddify_proto_rawDesc,
+			RawDescriptor: file_whitelabelairport_proto_rawDesc,
 			NumEnums:      4,
 			NumMessages:   25,
 			NumExtensions: 0,
 			NumServices:   3,
 		},
-		GoTypes:           file_hiddify_proto_goTypes,
-		DependencyIndexes: file_hiddify_proto_depIdxs,
-		EnumInfos:         file_hiddify_proto_enumTypes,
-		MessageInfos:      file_hiddify_proto_msgTypes,
+		GoTypes:           file_whitelabelairport_proto_goTypes,
+		DependencyIndexes: file_whitelabelairport_proto_depIdxs,
+		EnumInfos:         file_whitelabelairport_proto_enumTypes,
+		MessageInfos:      file_whitelabelairport_proto_msgTypes,
 	}.Build()
-	File_hiddify_proto = out.File
-	file_hiddify_proto_rawDesc = nil
-	file_hiddify_proto_goTypes = nil
-	file_hiddify_proto_depIdxs = nil
+	File_whitelabelairport_proto = out.File
+	file_whitelabelairport_proto_rawDesc = nil
+	file_whitelabelairport_proto_goTypes = nil
+	file_whitelabelairport_proto_depIdxs = nil
 }

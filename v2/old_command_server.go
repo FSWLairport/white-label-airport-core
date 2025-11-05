@@ -1,7 +1,7 @@
 package v2
 
 import (
-	pb "github.com/hiddify/hiddify-core/hiddifyrpc"
+	pb "github.com/pppwaw/white-label-airport-core/whitelabelairportrpc"
 
 	"github.com/sagernet/sing-box/experimental/libbox"
 	"github.com/sagernet/sing-box/log"
