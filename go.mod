@@ -17,7 +17,7 @@ require (
 	github.com/sagernet/sing-box v1.8.9
 	github.com/sagernet/sing-dns v0.2.3
 	github.com/spf13/cobra v1.8.0
-	github.com/xmdhs/clash2singbox v0.0.2
+	github.com/xmdhs/clash2singbox v0.1.4
 	golang.org/x/sys v0.25.0
 	google.golang.org/grpc v1.66.0
 	google.golang.org/protobuf v1.34.2
@@ -25,7 +25,6 @@ require (
 )
 
 require (
-	github.com/Yiwen-Chan/tinydb v0.0.0-20230129042445-3321642f0674
 	github.com/syndtr/goleveldb v1.0.1-0.20200815110645-5c35d600f0ca
 	github.com/tendermint/tm-db v0.6.7
 )
