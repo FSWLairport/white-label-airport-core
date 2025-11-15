@@ -11,10 +11,10 @@ ifeq ($(OS),Windows_NT)
 Not available for Windows! use bash in WSL
 endif
 
-TAGS=with_gvisor,with_quic,with_wireguard,with_utls,with_clash_api,with_grpc
+TAGS=with_gvisor,with_quic,with_wireguard,with_utls,with_clash_api,with_grpc,badlinkname,tfogo_checklinkname0
 IOS_ADD_TAGS=with_dhcp,with_low_memory,with_conntrack
-GOBUILDLIB=CGO_ENABLED=1 go build -trimpath -tags $(TAGS) -ldflags="-w -s" -buildmode=c-shared
-GOBUILDSRV=CGO_ENABLED=1 go build -ldflags "-s -w" -trimpath -tags $(TAGS)
+GOBUILDLIB=CGO_ENABLED=1 go build -trimpath -tags $(TAGS) -ldflags="-w -s -checklinkname=0" -buildmode=c-shared
+GOBUILDSRV=CGO_ENABLED=1 go build -ldflags "-s -w -checklinkname=0" -trimpath -tags $(TAGS)
 PNPM?=pnpm
 PROTOC?=protoc
 PROTOC_GEN_GRPC_WEB?=protoc-gen-grpc-web
@@ -36,15 +36,15 @@ headers:
 	go build -buildmode=c-archive -o $(BINDIR)/$(LIBNAME).a ./custom
 
 android: lib_install
-	gomobile bind -v -androidapi=21 -javapkg=io.nekohasekai -libname=box -tags=$(TAGS) -trimpath -target=android -o $(BINDIR)/$(LIBNAME).aar github.com/sagernet/sing-box/experimental/libbox ./mobile
+	gomobile bind -v -androidapi=21 -javapkg=io.nekohasekai -libname=box -tags=$(TAGS) -trimpath -ldflags="-w -s -checklinkname=0" -target=android -o $(BINDIR)/$(LIBNAME).aar github.com/sagernet/sing-box/experimental/libbox ./mobile
 
 ios-full: lib_install
-	gomobile bind -v  -target ios,iossimulator,tvos,tvossimulator,macos -libname=box -tags=$(TAGS),$(IOS_ADD_TAGS) -trimpath -ldflags="-w -s" -o $(BINDIR)/$(PRODUCT_NAME).xcframework github.com/sagernet/sing-box/experimental/libbox ./mobile 
+	gomobile bind -v  -target ios,iossimulator,tvos,tvossimulator,macos -libname=box -tags=$(TAGS),$(IOS_ADD_TAGS) -trimpath -ldflags="-w -s -checklinkname=0" -o $(BINDIR)/$(PRODUCT_NAME).xcframework github.com/sagernet/sing-box/experimental/libbox ./mobile 
 	mv $(BINDIR)/$(PRODUCT_NAME).xcframework $(BINDIR)/$(LIBNAME).xcframework 
 	cp Libcore.podspec $(BINDIR)/$(LIBNAME).xcframework/
 
 ios: lib_install
-	gomobile bind -v  -target ios -libname=box -tags=$(TAGS),$(IOS_ADD_TAGS) -trimpath -ldflags="-w -s" -o $(BINDIR)/Libcore.xcframework github.com/sagernet/sing-box/experimental/libbox ./mobile
+	gomobile bind -v  -target ios -libname=box -tags=$(TAGS),$(IOS_ADD_TAGS) -trimpath -ldflags="-w -s -checklinkname=0" -o $(BINDIR)/Libcore.xcframework github.com/sagernet/sing-box/experimental/libbox ./mobile
 	cp Info.plist $(BINDIR)/Libcore.xcframework/
 
 
@@ -82,7 +82,7 @@ linux-amd64:
 linux-custom:
 	mkdir -p $(BINDIR)/
 	#env GOARCH=mips $(GOBUILDSRV) -o $(BINDIR)/$(CLINAME) ./cli/
-	go build -ldflags "-s -w" -trimpath -tags $(TAGS) -o $(BINDIR)/$(CLINAME) ./cli/
+	go build -ldflags "-s -w -checklinkname=0" -trimpath -tags $(TAGS) -o $(BINDIR)/$(CLINAME) ./cli/
 	chmod +x $(BINDIR)/$(CLINAME)
 	make webui
 
