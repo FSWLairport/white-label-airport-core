@@ -28,14 +28,15 @@ protos:
 
 
 lib_install:
-	go install -v github.com/sagernet/gomobile/cmd/gomobile@v0.1.1
-	go install -v github.com/sagernet/gomobile/cmd/gobind@v0.1.1
+	go install -v github.com/sagernet/gomobile/cmd/gomobile@v0.1.8
+	go install -v github.com/sagernet/gomobile/cmd/gobind@v0.1.8
 	$(PNPM) install --frozen-lockfile
 
 headers:
 	go build -buildmode=c-archive -o $(BINDIR)/$(LIBNAME).a ./custom
 
 android: lib_install
+	if [ ! -d "$(BINDIR)" ]; then mkdir -p $(BINDIR); fi
 	gomobile bind -v -androidapi=21 -javapkg=io.nekohasekai -libname=box -tags=$(TAGS) -trimpath -ldflags="-w -s -checklinkname=0" -target=android -o $(BINDIR)/$(LIBNAME).aar github.com/sagernet/sing-box/experimental/libbox ./mobile
 
 ios-full: lib_install
@@ -99,7 +100,7 @@ macos-universal: macos-amd64 macos-arm64
 	chmod +x $(BINDIR)/$(CLINAME)
 
 clean:
-	rm $(BINDIR)/*
+	rm -r $(BINDIR)/*
 
 
 
