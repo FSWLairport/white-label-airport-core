@@ -138,9 +138,6 @@ func (p *cliPlatform) GetInterfaces() (libbox.NetworkInterfaceIterator, error) {
 			}
 			addresses = append(addresses, prefix.String())
 		}
-		if len(addresses) == 0 {
-			continue
-		}
 		ifaceType := classifyInterfaceType(iface.Name)
 		interfaces = append(interfaces, &libbox.NetworkInterface{
 			Index:     int32(iface.Index),
