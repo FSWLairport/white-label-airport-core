@@ -29,7 +29,7 @@ func ParseConfig(hiddifySettings *config.HiddifyOptions, configStr string) (*opt
 			fmt.Println("Error creating request:", err)
 			return nil, err
 		}
-		req.Header.Set("User-Agent", "HiddifyNext/2.3.1 ("+runtime.GOOS+") like ClashMeta v2ray sing-box 1.8.9")
+		req.Header.Set("User-Agent", "HiddifyNext/2.3.1 ("+runtime.GOOS+") like ClashMeta v2ray sing-box 1.12.12")
 		resp, err := client.Do(req)
 		if err != nil {
 			fmt.Println("Error making GET request:", err)
