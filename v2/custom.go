@@ -164,7 +164,7 @@ func StartService(in *pb.StartRequest) (*pb.CoreInfoResponse, error) {
 		}
 	}
 
-	Log(pb.LogLevel_DEBUG, pb.LogType_CORE, "Stating Service ")
+	Log(pb.LogLevel_DEBUG, pb.LogType_CORE, "Starting Service ")
 	instance, err := NewService(parsedContent)
 	if err != nil {
 		Log(pb.LogLevel_FATAL, pb.LogType_CORE, err.Error())
