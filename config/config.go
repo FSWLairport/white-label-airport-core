@@ -61,23 +61,44 @@ func BuildConfigJson(configOpt HiddifyOptions, input option.Options) (string, er
 func BuildConfig(opt HiddifyOptions, input option.Options) (*option.Options, error) {
 	fmt.Printf("config options: %++v\n", opt)
 
-	var options option.Options
-	if opt.EnableFullConfig {
-		options.Inbounds = input.Inbounds
-		options.DNS = input.DNS
-		options.Route = input.Route
+	options := option.Options{
+		Inbounds:     input.Inbounds,
+		DNS:          input.DNS,
+		Outbounds:    input.Outbounds,
+		Route:        input.Route,
+		Experimental: input.Experimental,
+	}
+
+	if len(options.Inbounds) == 0 {
+		setInbound(&options, &opt)
+	}
+
+	useLocalDNS := opt.UseLocalDns || options.DNS == nil
+
+	if useLocalDNS {
+		setDns(&options, &opt, &input)
 	}
 
 	setClashAPI(&options, &opt)
 	setLog(&options, &opt)
-	setInbound(&options, &opt)
-	setDns(&options, &opt, &input)
-	setRoutingOptions(&options, &opt)
-	setFakeDns(&options, &opt)
-	rewriteRCodeDNSServers(options.DNS)
-	err := setOutbounds(&options, &input, &opt)
-	if err != nil {
-		return nil, err
+
+	if useLocalDNS {
+		setFakeDns(&options, &opt)
+	}
+
+	if options.DNS != nil {
+		rewriteRCodeDNSServers(options.DNS)
+	}
+
+	if len(options.Outbounds) == 0 {
+		err := setOutbounds(&options, &input, &opt)
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	if options.Route == nil {
+		setRoutingOptions(&options, &opt)
 	}
 
 	return &options, nil

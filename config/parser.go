@@ -51,10 +51,24 @@ func ParseConfigContent(contentstr string, debug bool, configOpt *HiddifyOptions
 			if tmpJsonObj["outbounds"] == nil {
 				jsonObj["outbounds"] = []interface{}{jsonObj}
 			} else {
-				if fullConfig || (configOpt != nil && configOpt.EnableFullConfig) {
+				if fullConfig {
 					jsonObj = tmpJsonObj
 				} else {
-					jsonObj["outbounds"] = tmpJsonObj["outbounds"]
+					if outbounds, ok := tmpJsonObj["outbounds"]; ok {
+						jsonObj["outbounds"] = outbounds
+					}
+					if inbounds, ok := tmpJsonObj["inbounds"]; ok {
+						jsonObj["inbounds"] = inbounds
+					}
+					if dns, ok := tmpJsonObj["dns"]; ok {
+						jsonObj["dns"] = dns
+					}
+					if route, ok := tmpJsonObj["route"]; ok {
+						jsonObj["route"] = route
+					}
+					if experimental, ok := tmpJsonObj["experimental"]; ok {
+						jsonObj["experimental"] = experimental
+					}
 				}
 			}
 		} else if jsonArray, ok := tmpJsonResult.([]map[string]interface{}); ok {

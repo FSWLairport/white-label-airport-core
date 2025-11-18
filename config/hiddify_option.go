@@ -11,6 +11,7 @@ import (
 
 type HiddifyOptions struct {
 	EnableFullConfig        bool   `json:"enable-full-config"`
+	UseLocalDns             bool   `json:"use-local-dns"`
 	LogLevel                string `json:"log-level"`
 	LogFile                 string `json:"log-file"`
 	EnableClashApi          bool   `json:"enable-clash-api"`
@@ -83,6 +84,7 @@ type MuxOptions struct {
 
 func DefaultHiddifyOptions() *HiddifyOptions {
 	return &HiddifyOptions{
+		UseLocalDns: false,
 		DNSOptions: DNSOptions{
 			RemoteDnsAddress:        "1.1.1.1",
 			RemoteDnsDomainStrategy: option.DomainStrategy(dns.DomainStrategyAsIS),
