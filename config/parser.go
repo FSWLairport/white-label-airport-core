@@ -118,7 +118,7 @@ func patchConfig(content []byte, name string) ([]byte, error) {
 	}
 	content = buffer.Bytes()
 
-	fmt.Printf("%s\n", content)
+	fmt.Printf("Config: %s\n", content)
 	return validateResult(content, name)
 }
 
