@@ -62,16 +62,15 @@ func BuildConfig(opt HiddifyOptions, input option.Options) (*option.Options, err
 	fmt.Printf("config options: %++v\n", opt)
 
 	options := option.Options{
-		Inbounds:     input.Inbounds,
+		Inbounds:     []option.Inbound{},
 		DNS:          input.DNS,
 		Outbounds:    input.Outbounds,
 		Route:        input.Route,
 		Experimental: input.Experimental,
 	}
 
-	if len(options.Inbounds) == 0 {
-		setInbound(&options, &opt)
-	}
+	// Always use local inbound settings
+	setInbound(&options, &opt)
 
 	useLocalDNS := opt.UseLocalDns || options.DNS == nil
 
