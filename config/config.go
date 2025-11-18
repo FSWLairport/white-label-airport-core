@@ -181,11 +181,11 @@ func setOutbounds(options *option.Options, input *option.Options, opt *HiddifyOp
 			Outbounds: tags,
 			URL:       opt.ConnectionTestUrl,
 			Interval:  badoption.Duration(opt.URLTestInterval.Duration()),
-			Tolerance: 1,
+			Tolerance: 50,
 			IdleTimeout: badoption.Duration(
 				opt.URLTestInterval.Duration() * 3,
 			),
-			InterruptExistConnections: true,
+			InterruptExistConnections: false,
 		},
 	}
 	defaultSelect := urlTest.Tag
@@ -303,15 +303,17 @@ func setInbound(options *option.Options, opt *HiddifyOptions) {
 		}
 		switch opt.IPv6Mode {
 		case option.DomainStrategy(dns.DomainStrategyUseIPv4):
-			tunOptions.Address = append(tunOptions.Address, netip.MustParsePrefix("172.19.0.1/28"))
+			tunOptions.Address = append(tunOptions.Address, netip.MustParsePrefix("172.19.0.1/30"))
 		case option.DomainStrategy(dns.DomainStrategyUseIPv6):
-			tunOptions.Address = append(tunOptions.Address, netip.MustParsePrefix("fdfe:dcba:9876::1/126"))
+			tunOptions.Address = append(tunOptions.Address, netip.MustParsePrefix("2001:0470:f9da:fdfa::1/64"))
 		default:
-			tunOptions.Address = append(tunOptions.Address,
-				netip.MustParsePrefix("172.19.0.1/28"),
-				netip.MustParsePrefix("fdfe:dcba:9876::1/126"),
+			tunOptions.Address = append(
+				tunOptions.Address,
+				netip.MustParsePrefix("172.19.0.1/30"),
+				netip.MustParsePrefix("2001:0470:f9da:fdfa::1/64"),
 			)
 		}
+		tunOptions.RouteExcludeAddressSet = append(tunOptions.RouteExcludeAddressSet, "geoip-cn")
 		options.Inbounds = append(options.Inbounds, option.Inbound{
 			Type:    C.TypeTun,
 			Tag:     InboundTUNTag,
@@ -376,7 +378,7 @@ func setDns(options *option.Options, opt *HiddifyOptions, input *option.Options)
 		}
 	}
 	servers := []option.DNSServerOptions{
-		buildDNSServer(DNSRemoteTag, opt.RemoteDnsAddress, DNSDirectTag, opt.RemoteDnsDomainStrategy, ""),
+		buildDNSServer(DNSRemoteTag, opt.RemoteDnsAddress, "", opt.RemoteDnsDomainStrategy, ""),
 		buildDNSServer(DNSDirectTag, opt.DirectDnsAddress, DNSLocalTag, opt.DirectDnsDomainStrategy, ""),
 		buildDNSServer(DNSLocalTag, "local", "", option.DomainStrategy(0), ""),
 		buildDNSServer(DNSBlockTag, "rcode://success", "", option.DomainStrategy(0), ""),
@@ -551,6 +553,37 @@ func setRoutingOptions(options *option.Options, opt *HiddifyOptions) {
 	routeRules := []option.Rule{}
 	rulesets := []option.RuleSet{}
 
+	rulesets = append(
+		rulesets,
+		option.RuleSet{
+			Type:   C.RuleSetTypeRemote,
+			Tag:    "geosite-geolocation-!cn",
+			Format: C.RuleSetFormatBinary,
+			RemoteOptions: option.RemoteRuleSet{
+				URL:            "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs",
+				DownloadDetour: OutboundMainProxyTag,
+			},
+		},
+		option.RuleSet{
+			Type:   C.RuleSetTypeRemote,
+			Tag:    "geosite-cn",
+			Format: C.RuleSetFormatBinary,
+			RemoteOptions: option.RemoteRuleSet{
+				URL:            "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cn.srs",
+				DownloadDetour: OutboundMainProxyTag,
+			},
+		},
+		option.RuleSet{
+			Type:   C.RuleSetTypeRemote,
+			Tag:    "geoip-cn",
+			Format: C.RuleSetFormatBinary,
+			RemoteOptions: option.RemoteRuleSet{
+				URL:            "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/srs/cn.srs",
+				DownloadDetour: OutboundMainProxyTag,
+			},
+		},
+	)
+
 	if opt.EnableTun && runtime.GOOS == "android" {
 		routeRules = append(
 			routeRules,
@@ -596,6 +629,70 @@ func setRoutingOptions(options *option.Options, opt *HiddifyOptions) {
 		},
 	})
 
+	routeRules = append(routeRules, option.Rule{
+		Type: C.RuleTypeDefault,
+		DefaultOptions: option.DefaultRule{
+			RuleAction: option.RuleAction{
+				Action: C.RuleActionTypeSniff,
+			},
+		},
+	})
+
+	routeRules = append(routeRules, option.Rule{
+		Type: C.RuleTypeDefault,
+		DefaultOptions: option.DefaultRule{
+			RawDefaultRule: option.RawDefaultRule{
+				Protocol: []string{"dns"},
+			},
+			RuleAction: option.RuleAction{
+				Action: C.RuleActionTypeHijackDNS,
+			},
+		},
+	})
+
+	routeRules = append(routeRules, option.Rule{
+		Type: C.RuleTypeDefault,
+		DefaultOptions: option.DefaultRule{
+			RawDefaultRule: option.RawDefaultRule{
+				IPIsPrivate: true,
+			},
+			RuleAction: routeActionForOutbound(OutboundDirectTag),
+		},
+	})
+
+	routeRules = append(routeRules, option.Rule{
+		Type: C.RuleTypeDefault,
+		DefaultOptions: option.DefaultRule{
+			RawDefaultRule: option.RawDefaultRule{
+				ClashMode: "关闭代理",
+			},
+			RuleAction: routeActionForOutbound(OutboundDirectTag),
+		},
+	})
+
+	routeRules = append(routeRules, option.Rule{
+		Type: C.RuleTypeDefault,
+		DefaultOptions: option.DefaultRule{
+			RawDefaultRule: option.RawDefaultRule{
+				ClashMode: "全局代理",
+			},
+			RuleAction: routeActionForOutbound(OutboundMainProxyTag),
+		},
+	})
+
+	routeRules = append(routeRules, option.Rule{
+		Type: C.RuleTypeDefault,
+		DefaultOptions: option.DefaultRule{
+			RawDefaultRule: option.RawDefaultRule{
+				RuleSet: []string{
+					"geosite-cn",
+					"geoip-cn",
+				},
+			},
+			RuleAction: routeActionForOutbound(OutboundDirectTag),
+		},
+	})
+
 	// {
 	// 	Type: C.RuleTypeDefault,
 	// 	DefaultOptions: option.DefaultRule{
@@ -625,6 +722,16 @@ func setRoutingOptions(options *option.Options, opt *HiddifyOptions) {
 			},
 		)
 	}
+
+	dnsRules = append(dnsRules, option.DefaultDNSRule{
+		RawDefaultDNSRule: option.RawDefaultDNSRule{
+			RuleSet: []string{
+				"geosite-cn",
+				"geoip-cn",
+			},
+		},
+		DNSRuleAction: dnsRouteActionForServer(DNSDirectTag),
+	})
 
 	for _, rule := range opt.Rules {
 		routeRule := rule.MakeRule()
@@ -761,7 +868,7 @@ func setRoutingOptions(options *option.Options, opt *HiddifyOptions) {
 		dnsRules = append(dnsRules, dnsRule)
 
 	}
-	if opt.Region != "other" {
+	if opt.Region != "other" && opt.Region != "cn" {
 		dnsRule := option.DefaultDNSRule{
 			RawDefaultDNSRule: option.RawDefaultDNSRule{
 				DomainSuffix: []string{"." + opt.Region},
