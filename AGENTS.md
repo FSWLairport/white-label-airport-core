@@ -1,10 +1,10 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-CLI `cli/main.go` hands off to Cobra commands in `cmd/` (`run`, `warp`, `config`, `extension`). `custom/` builds shared libraries for desktop hosts, `mobile/` contains mobile bindings, and `extension/` hosts SDK, HTML demo, and server. Protobuf contracts stay in `hiddifyrpc/` (mirrored in `extension/html/rpc`); packaging assets live in `docker/`, `wrt/`, `bridge/`, builds land in `bin/`, and configs live in `config/`, `utils/`, `v2/`.
+CLI `cli/main.go` hands off to Cobra commands in `cmd/` (`run`, `config`, `extension`). `custom/` builds shared libraries for desktop hosts, `mobile/` contains mobile bindings, and `extension/` hosts SDK, HTML demo, and server. Protobuf contracts stay in `hiddifyrpc/` (mirrored in `extension/html/rpc`); packaging assets live in `docker/`, `wrt/`, `bridge/`, builds land in `bin/`, and configs live in `config/`, `utils/`, `v2/`.
 
 ## Build, Test & Development Commands
-- `./cmd.sh run --config ./config/default.json` executes the CLI with the default build tags; swap in other subcommands such as `warp` or `config`.
+- `./cmd.sh run --config ./config/default.json` executes the CLI with the default build tags; other available subcommands include `config` and `extension`.
 - `./cmd.sh extension` starts the self-hosted extension UI at `https://127.0.0.1:12346`.
 - `make linux-custom` gives a quick local `HiddifyCli` build; use the platform variants (`make linux-amd64`, `make windows-amd64`, `make macos-universal`, `make android`, `make ios`) before distributing binaries.
 - `pnpm install --frozen-lockfile && make protos` refreshes grpc-web bundles after editing `hiddifyrpc/*.proto` or `extension/html`.
