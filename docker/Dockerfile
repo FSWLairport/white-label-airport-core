@@ -14,8 +14,8 @@ RUN echo "architecture: $(apk --print-arch)" && \
             s390x) ARCH=s390x ;; \
             *) echo "Unsupported architecture: $(apk --print-arch) $(uname -m)" && exit 1 ;; \
         esac && \
-        echo "Downloading https://github.com/pppwaw/white-label-airport-core/releases/download/${VERSION}/hiddify-cli-linux-$ARCH.tar.gz" && \
-        curl -L -o hiddify-cli.tar.gz https://github.com/pppwaw/white-label-airport-core/releases/download/${VERSION}/hiddify-cli-linux-$ARCH.tar.gz && \
+        echo "Downloading https://github.com/FSWLairport/white-label-airport-core/releases/download/${VERSION}/hiddify-cli-linux-$ARCH.tar.gz" && \
+        curl -L -o hiddify-cli.tar.gz https://github.com/FSWLairport/white-label-airport-core/releases/download/${VERSION}/hiddify-cli-linux-$ARCH.tar.gz && \
         tar -xzf hiddify-cli.tar.gz && rm hiddify-cli.tar.gz
 COPY hiddify.sh .
 RUN chmod +x hiddify.sh

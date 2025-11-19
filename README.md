@@ -2,7 +2,7 @@
 
 ## Docker
 
-To Run our docker image see https://github.com/pppwaw/white-label-airport-core/pkgs/container/hiddify-core
+To Run our docker image see https://github.com/FSWLairport/white-label-airport-core/pkgs/container/hiddify-core
 
 Docker
 
@@ -13,7 +13,7 @@ docker pull ghcr.io/hiddify/hiddify-core:latest
 Docker Compose
 
 ```
-git clone https://github.com/pppwaw/white-label-airport-core
+git clone https://github.com/FSWLairport/white-label-airport-core
 cd hiddify-core/docker
 docker-compose up
 ```
