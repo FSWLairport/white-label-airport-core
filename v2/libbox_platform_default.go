@@ -45,7 +45,7 @@ func (p *cliPlatform) AutoDetectInterfaceControl(fd int32) error {
 }
 
 func (p *cliPlatform) OpenTun(options libbox.TunOptions) (int32, error) {
-	return 0, errUnsupportedPlatformFeature
+	return openTunDevice(options, p.interfaceFinder)
 }
 
 func (p *cliPlatform) WriteLog(message string) {
