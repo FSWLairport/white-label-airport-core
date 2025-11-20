@@ -12,7 +12,7 @@ on:
         type: string
         default: "dev"
 env:
-  REGISTRY_IMAGE: ghcr.io/FSWLairport/white-label-airport-core
+  REGISTRY_IMAGE: ghcr.io/fswlairport/white-label-airport-core
 
 jobs:
   update_wrt_hash:
